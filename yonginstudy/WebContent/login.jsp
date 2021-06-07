@@ -82,6 +82,14 @@
 		font-weight: bold;
 	}
 </style>
+<script type="text/javascript">
+	function check(loginuser) {
+		if (loginuser.id.value.length == 0 || loginuser.pwd.value.length == 0){
+			alter("아이디와 비밀번호를 입력하여주세요");
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<main id="login_main">			
@@ -89,12 +97,12 @@
 			<h1 id="login_title">YONG 스터디</h1>
 		
 			<div id="login_contents">
-				<form action="" method="post">
+				<form action="login.do" method="post" onsubmit="return check(this)">
 					<div class="login-con">
-					<span style="font-size: 20px; padding-right: 20px;">ID : </span><input type="text" class="login_input" >
+					<span style="font-size: 20px; padding-right: 20px;">ID : </span><input type="text" class="login_input" name="id" id="id" >
 					</div>
 					<div class="login-con">
-					<span style="font-size: 20px;padding-right: 13px;">PW : </span><input type="password" class="login_input">
+					<span style="font-size: 20px;padding-right: 13px;">PW : </span><input type="password" class="login_input" name="pwd" id="pwd">
 					</div>
 					<input type="submit" id="login_btn" value="Log in">
 				</form>

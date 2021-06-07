@@ -140,10 +140,10 @@
     	<button id="right-button"></button>
     	<div class="but_wrap">
 		<ul class="but_ul">
-			<li id="butli1"><div><a><img alt="거울연습실" src="img/mirror.jpg"></a><p>거울연습실</p></div></li>
-			<li id="butli2"><div><img alt="훈련장" src="img/judo.jpg"><p>훈련장</p></div></li>
-			<li id="butli3"><div><img alt="책상형 강의실" src="img/gang.jpg"><p>책상형 강의실</p></div></li>
-			<li id="butli4"><div><img alt="컴퓨터실" src="img/computer.png"><p>컴퓨터실</p></div></li>
+			<li id="butli1"><div><a href="lectureSearch.do?job=mirror"><img alt="거울연습실" src="img/mirror.jpg"></a><p>거울연습실</p></div></li>
+			<li id="butli2"><div><a href="lectureSearch.do?job=judo"><img alt="훈련장" src="img/judo.jpg"></a><p>훈련장</p></div></li>
+			<li id="butli3"><div><a href="lectureSearch.do?job=gang"><img alt="책상형 강의실" src="img/gang.jpg"></a><p>책상형 강의실</p></div></li>
+			<li id="butli4"><div><a href="lectureSearch.do?job=computer"><img alt="컴퓨터실" src="img/computer.png"></a><p>컴퓨터실</p></div></li>
 		</ul>
 	</div>
 	</section>

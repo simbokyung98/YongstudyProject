@@ -106,20 +106,20 @@
 			</div>
 			<div id="join_right"> 
 				<h5>회원가입</h5>
-				<form action="" method="post">
+				<form action="join.do" method="post">
 					<ul class="join_ul">
-						<li class="join_li"><span>아이디</span>  <input type="text"></li>
-						<li class="join_li"><span>비밀번호</span>  <input type="text"></li>
-						<li class="join_li"><span>학번</span>  <input type="text"></li>
-						<li class="join_li"><span>학과</span>  <select>
-									<option>컴퓨터과학과</option>
-									<option>물류통계정보학과</option>
-									<option>경영학과</option>
-									<option>미디어디자인학과</option>
-									<option>중국어학과</option>
-									<option>식품영양학과</option>
+						<li class="join_li"><span>아이디</span>  <input type="text" name="id"></li>
+						<li class="join_li"><span>비밀번호</span>  <input type="text" name="pwd"></li>
+						<li class="join_li"><span>학번</span>  <input type="text" name="userclass"></li>
+						<li class="join_li"><span>학과</span>  <select name="major">
+									<option value="컴퓨터과학과">컴퓨터과학과</option>
+									<option value="물류통계정보학과">물류통계정보학과</option>
+									<option value="경영학과">경영학과</option>
+									<option value="미디어디자인학과">미디어디자인학과</option>
+									<option value="중국어학과">중국어학과</option>
+									<option value="식품영양학과">식품영양학과</option>
 								</select> </li>
-						<li class="join_li"><span>이름</span>  <input type="text"></li>
+						<li class="join_li"><span>이름</span>  <input type="text" name="name"></li>
 						<li class="join_but"><input type="submit" value="회원가입"><a href="login.jsp">로그인 페이지</a></li>
 					</ul>
 				</form>

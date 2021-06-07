@@ -146,7 +146,7 @@
 			</div>
 			<ul id="main_menu">
 				<li><a href="#">YONG 스터디</a></li>
-				<li><a href="#">강의실예약</a></li>
+				<li><a href="lectureSearch.do">강의실예약</a></li>
 				<li><a href="#">커뮤니티</a></li>
 				<li><a href="#">스터디모집</a></li>
 			</ul>
@@ -162,10 +162,10 @@
 			</li>
 			<li class="dowm_liwrap">
 				<ul class="dowm_factor">
-					<li><a href="#">거울 연습실</a></li>
-					<li><a href="#">훈련장</a></li>
-					<li><a href="#">책상형 강의실</a></li>
-					<li><a href="#">컴퓨터실</a></li>
+					<li><a href="lectureSearch.do?job=mirror">거울강의실</a></li>
+					<li><a href="lectureSearch.do?job=judo">훈련장</a></li>
+					<li><a href="lectureSearch.do?job=gang">책상형 강의실</a></li>
+					<li><a href="lectureSearch.do?job=computer">컴퓨터실</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">
