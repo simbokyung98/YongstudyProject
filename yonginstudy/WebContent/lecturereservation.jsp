@@ -68,14 +68,21 @@
 	}
 	.calde_inside_ul li{
 		width: 150px;
-		height: 30px;
-		border: solid 2px  #88A67E;
-		background: white;
-		color: #88A67E;
-		font-family: 'ELAND_Choice_L';
+		height: 50px;		
 		text-align: center;
 		margin: 10px;
-		padding-top: 10px;
+	}
+	.calinsidebut{
+		width: 150px;
+		height: 50px;
+		border: solid 2px  #88A67E;
+		color: #88A67E;
+		font-family: 'ELAND_Choice_L';
+		background: white;	
+		font-size: 18px;
+		letter-spacing: 3px;
+	}
+	.calinsidebut:hover, .calinsidebut:link{
 	}
 	#option_wrap{
 		width: 350px;
@@ -123,6 +130,7 @@
 	#caldetail_wrap{
 		display: none;
 	}
+	
 </style>
 <script type="text/javascript">
 	var today = new Date();//오늘 날짜
@@ -159,7 +167,7 @@
 		//달력 출력
 		for (i=1;i<=lastDate.getDate();i++){
 			cell = row.insertCell();
-			cell.innerHTML = "<div class='butval' value="+i+">"+i+"</div><div class='cal_but'><button value="+i+">+</button></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
+			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='cal_but'><button value="+i+">+</button></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
 			cnt = cnt+1;//열의 위치 다음칸으로
 			if(cnt %7 == 1){
 				//일요일 구하기
@@ -184,18 +192,18 @@
 		$(function(){
 		   $(".cal_but button").on('click',function(){  
 			   if ( $('#caldetail_wrap').css("display") == "none"){	
-				   $(this).parent().parent().css({ "border": "2px solid red"});
+				   $(this).parent().parent().parent().css({ "border": "2px solid red"});
 					var year = $('#y').text();
 					var month = $('#m').text();
 					var day = $(this).attr('value');
 					var hid = $('#hiden').html();
-					$(this).parent().parent().parent().after("<tr class='chose'><td colspan='7'>"+ hid+"</td></tr>"); 
+					$(this).parent().parent().parent().parent().after("<tr class='chose'><td colspan='7'>"+ hid+"</td></tr>"); 
 					$('#caldetail_wrap').css("display", "block");
 					
 			   }else{
 				   $('tr').remove('.chose');
 				   $('#caldetail_wrap').css("display", "none");
-				   $(this).parent().parent().css({ "border": "1px solid gray"});
+				   $(this).parent().parent().parent().css({ "border": "1px solid gray"});
 				  
 			   }
 			  
@@ -232,25 +240,25 @@
 					<ul>
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li> 오전 09:00</li>
-								<li>오전 10:00</li>
-								<li>오후 11:00</li>
+								<li><input type="button" value="09:00" class="calinsidebut"></li>
+								<li><input type="button" value="10:00" class="calinsidebut"></li>
+								<li><input type="button" value="11:00" class="calinsidebut"></li>
 							</ul>
 						</li>
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li>오후 12:00</li>
-								<li>오후 1:00</li>
-								<li>오후 2:00</li>
-								<li>오후 3:00</li>
+								<li><input type="button" value="12:00" class="calinsidebut"></li>
+								<li><input type="button" value="13:00" class="calinsidebut"></li>
+								<li><input type="button" value="14:00" class="calinsidebut"></li>
+								<li><input type="button" value="15:00" class="calinsidebut"></li>
 							</ul>
 						</li>
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li>오후 4:00</li>
-								<li>오후 5:00</li>
-								<li>오후 6:00</li>
-								<li>오후 7:00</li>
+								<li><input type="button" value="16:00" class="calinsidebut"></li>
+								<li><input type="button" value="17:00" class="calinsidebut"></li>
+								<li><input type="button" value="18:00" class="calinsidebut"></li>
+								<li><input type="button" value="19:00" class="calinsidebut"></li>
 							</ul>
 						</li>
 					</ul>
