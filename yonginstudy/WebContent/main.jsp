@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	#slidewrap{
@@ -67,12 +67,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
         $(document).ready(function () {
-            // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+            // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
             var width = $('[data-role="slider"]').attr('data-width');
             var height = $('[data-role="slider"]').attr('data-height');
             var count = $('[data-role="slider"] div.item').length;
             
-            // ½ºÅ¸ÀÏÀ» Àû¿ëÇÕ´Ï´Ù.
+            // ìŠ¤íƒ€ì¼ì„ ì ìš©í•©ë‹ˆë‹¤.
             $('[data-role="slider"]').css({
                 position: 'relative',
                 overflow: 'hidden',
@@ -87,17 +87,17 @@
                 height: height,
                 float: 'left'
             });
-            // º¯¼ö¸¦ ¼±¾ğÇÕ´Ï´Ù.
+            // ë³€ìˆ˜ë¥¼ ì„ ì–¸í•©ë‹ˆë‹¤.
             var currentPage = 0;
             var changePage = function () {
                 $('[data-role="slider"] > .container').animate({
                     left: -currentPage * width
                 }, 500);
             };
-            // ÀÌº¥Æ®¸¦ ¿¬°áÇÕ´Ï´Ù.
+            // ì´ë²¤íŠ¸ë¥¼ ì—°ê²°í•©ë‹ˆë‹¤.
             $('#left-button').click(function () {
                 if (currentPage > 0) {
-                    // ¿ŞÂÊÀ¸·Î ÀÌµ¿
+                    // ì™¼ìª½ìœ¼ë¡œ ì´ë™
                     currentPage = currentPage - 1;
                     changePage();
                 }else{
@@ -107,7 +107,7 @@
             });
             $('#right-button').click(function () {
                 if (currentPage < count - 1) {
-                    // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+                    // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
                     currentPage = currentPage + 1;
                     changePage();
                 }else{
@@ -140,10 +140,10 @@
     	<button id="right-button"></button>
     	<div class="but_wrap">
 		<ul class="but_ul">
-			<li id="butli1"><div><a href="lectureSearch.do?job=mirror"><img alt="°Å¿ï¿¬½À½Ç" src="img/mirror.jpg"></a><p>°Å¿ï¿¬½À½Ç</p></div></li>
-			<li id="butli2"><div><a href="lectureSearch.do?job=judo"><img alt="ÈÆ·ÃÀå" src="img/judo.jpg"></a><p>ÈÆ·ÃÀå</p></div></li>
-			<li id="butli3"><div><a href="lectureSearch.do?job=gang"><img alt="Ã¥»óÇü °­ÀÇ½Ç" src="img/gang.jpg"></a><p>Ã¥»óÇü °­ÀÇ½Ç</p></div></li>
-			<li id="butli4"><div><a href="lectureSearch.do?job=computer"><img alt="ÄÄÇ»ÅÍ½Ç" src="img/computer.png"></a><p>ÄÄÇ»ÅÍ½Ç</p></div></li>
+			<li id="butli1"><div><a href="lectureSearch.do?job=mirror"><img alt="ê±°ìš¸ì—°ìŠµì‹¤" src="img/mirror.jpg"></a><p>ê±°ìš¸ì—°ìŠµì‹¤</p></div></li>
+			<li id="butli2"><div><a href="lectureSearch.do?job=judo"><img alt="í›ˆë ¨ì¥" src="img/judo.jpg"></a><p>í›ˆë ¨ì¥</p></div></li>
+			<li id="butli3"><div><a href="lectureSearch.do?job=gang"><img alt="ì±…ìƒí˜• ê°•ì˜ì‹¤" src="img/gang.jpg"></a><p>ì±…ìƒí˜• ê°•ì˜ì‹¤</p></div></li>
+			<li id="butli4"><div><a href="lectureSearch.do?job=computer"><img alt="ì»´í“¨í„°ì‹¤" src="img/computer.png"></a><p>ì»´í“¨í„°ì‹¤</p></div></li>
 		</ul>
 	</div>
 	</section>

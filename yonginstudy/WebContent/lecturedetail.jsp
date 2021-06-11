@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	#lefture_detil_main{
@@ -86,26 +86,26 @@
 	<main id="lefture_detil_main">
 		<section>
 			<div id="letde_title">
-				°­ÀÇ½Ç ¾È³»
+				ê°•ì˜ì‹¤ ì•ˆë‚´
 			</div>
 			<div id="letde_contents">
-				<div id="letde_conimg"><img alt="°Å¿ï°­ÀÇ½Ç" src="img/${lecture.img } " > </div>
+				<div id="letde_conimg"><img alt="ê±°ìš¸ê°•ì˜ì‹¤" src="img/${lecture.img } " > </div>
 				<div id="letde_concon">
 					<h3>${lecture.title }</h3>
 					<div id="letde_confactor">
 						<ul>
-							<li>´Ü°ú´ë  :  ${lecture.college }</li>
-							<li>À§Ä¡  :  ${lecture.location }</li>
-							<li>¼ö¿ëÀÎ¿ø  :  ${lecture.maxpeople }¸í</li>
+							<li>ë‹¨ê³¼ëŒ€  :  ${lecture.college }</li>
+							<li>ìœ„ì¹˜  :  ${lecture.location }</li>
+							<li>ìˆ˜ìš©ì¸ì›  :  ${lecture.maxpeople }ëª…</li>
 						</ul>
 					</div>
 					<div id="letde_conbut">
-						<button  onclick="location.href='lecturereservation.jsp' ">¿¡¾àÇÏ±â</button>
+						<button  onclick="location.href='lecturereservation.jsp' ">ì—ì•½í•˜ê¸°</button>
 					</div>
 				</div>
 			</div>
 			<div id="letde_warning">
-				<img alt="ÁÖÀÇ»çÇ×" src="img/warning.png">
+				<img alt="ì£¼ì˜ì‚¬í•­" src="img/warning.png">
 			</div>
 		</section>
 	</main>

@@ -15,19 +15,25 @@ public class LoginController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		
 		Service s = Service.getInstance();
-		boolean result = false;
+		String major = null;
 		
-		result = s.login(id, pwd);
+		major = s.login(id, pwd);
 		
 		String path = null;
 		
-		if(result) {
+		if(major != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
+			session.setAttribute("major", major);
+			
 			path = "/main.jsp";
 		}else {
 			path = "/login.jsp";

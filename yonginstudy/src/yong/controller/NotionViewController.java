@@ -7,29 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import yong.service.Service;
-import yong.vo.User;
+import yong.vo.Notion;
 
-public class JoinController implements Controller {
+public class NotionViewController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		int userclass = Integer.parseInt(request.getParameter("userclass"));
-		String major = request.getParameter("major");
-		String name = request.getParameter("name");
-		
-		User user = new User(userclass, id, pwd, name, major); 
-		
+		String key = request.getParameter("key");
 		Service s = Service.getInstance();
-		s.join(user);
+		Notion notion = s.notionview(key);
 		
-		HttpUtil.forward(request, response, "/login.jsp");
-		
+		request.setAttribute("notion", notion);
+		HttpUtil.forward(request, response, "/notionview.jsp");
 
 	}
 

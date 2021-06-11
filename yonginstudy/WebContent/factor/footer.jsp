@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	@font-face {
@@ -27,7 +27,7 @@
 	*{
 			margin: 0 auto;
 			padding: 0;
-		}	
+		}	 
 	.fot_box{  
 		clear: left; 
 		background: #66865C; 
@@ -134,8 +134,8 @@
 		<div>
 			<nav id="bottom_menu">
 				<ul>
-					<li class="bottom_link"><a href="#" id="main">¿ëÀÎ´ë¸ÞÀÎ</a> </li>
-					<li class="bottom_link"><a href="#" id="total">Á¾ÇÕÁ¤º¸¼­ºñ½º</a></li>
+					<li class="bottom_link"><a href="#" id="main">ìš©ì¸ëŒ€ë©”ì¸</a> </li>
+					<li class="bottom_link"><a href="#" id="total">ì¢…í•©ì •ë³´ì„œë¹„ìŠ¤</a></li>
 					<li class="bottom_link"><a href="#" id="LMS">LMS</a></li>
 					<li class="bottom_link"><a href="#" id="yes">YES</a></li>		
 				</ul>	
@@ -143,20 +143,20 @@
 			<hr>
 			<div id="fot_items">
 				<div id="bottom_text">
-					<h3 class="fot_title t1"> ¿ëÀÎ´ëÇÐ±³ Á¤º¸ </h3>
+					<h3 class="fot_title t1"> ìš©ì¸ëŒ€í•™êµ ì •ë³´ </h3>
 					<ul>
-						<li> ÁÖ¼Ò : 201757017 </li>
-						<li> ÀüÈ­ : 000-000-0000 </li>
-						<li>ÀÌ¸ÞÀÏ : 000@0000.000 </li>
+						<li> ì£¼ì†Œ : 201757017 </li>
+						<li> ì „í™” : 000-000-0000 </li>
+						<li>ì´ë©”ì¼ : 000@0000.000 </li>
 					</ul>
-					<h3 class="fot_title t2"> Á¦ÀÛÀÚ Á¤º¸ </h3>
+					<h3 class="fot_title t2"> ì œìž‘ìž ì •ë³´ </h3>
 					<ul>
-						<li> 201757017 ½Éº¸°æ / ¹°·ùÅë°èÁ¤º¸ÇÐ°ú </li>
+						<li> 201757017 ì‹¬ë³´ê²½ / ë¬¼ë¥˜í†µê³„ì •ë³´í•™ê³¼ </li>
 					</ul>
 				</div>
 				<div class="fot_right">
 					<ul>     
-						<li><div class="callcen">°í°´¼¾ÅÍ</div><div class="callcennum">1111-2222</div> </li>
+						<li><div class="callcen">ê³ ê°ì„¼í„°</div><div class="callcennum">1111-2222</div> </li>
 						<li><div class="sns"><img src="/yonginstudy/img/facebook.png" class="f"><img src="/yonginstudy/img/instagram.png" class="i"></div> </li>
 					</ul>
 				</div>

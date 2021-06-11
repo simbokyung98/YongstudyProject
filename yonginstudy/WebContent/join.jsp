@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ȸ������</title>
+<title>회원가입</title>
 	<style type="text/css">
 		@font-face {
 		    font-family: 'Recipekorea';
@@ -105,22 +105,22 @@
 			<div id="join_left">
 			</div>
 			<div id="join_right"> 
-				<h5>ȸ������</h5>
-				<form action="join.do" method="post">
+				<h5>회원가입</h5>
+				<form action="join.do" method="post" accept-charset="UTF-8">
 					<ul class="join_ul">
-						<li class="join_li"><span>���̵�</span>  <input type="text" name="id"></li>
-						<li class="join_li"><span>��й�ȣ</span>  <input type="text" name="pwd"></li>
-						<li class="join_li"><span>�й�</span>  <input type="text" name="userclass"></li>
-						<li class="join_li"><span>�а�</span>  <select name="major">
-									<option value="��ǻ�Ͱ��а�">��ǻ�Ͱ��а�</option>
-									<option value="������������а�">������������а�</option>
-									<option value="�濵�а�">�濵�а�</option>
-									<option value="�̵��������а�">�̵��������а�</option>
-									<option value="�߱����а�">�߱����а�</option>
-									<option value="��ǰ�����а�">��ǰ�����а�</option>
+						<li class="join_li"><span>아이디</span>  <input type="text" name="id"></li>
+						<li class="join_li"><span>비밀번호</span>  <input type="text" name="pwd"></li>
+						<li class="join_li"><span>학번</span>  <input type="text" name="userclass"></li>
+						<li class="join_li"><span>학과</span>  <select name="major">
+									<option value="컴퓨터과학과">컴퓨터과학과</option>
+									<option value="물류통계정보학과">물류통계정보학과</option>
+									<option value="경영학과">경영학과</option>
+									<option value="미디어디자인학과">미디어디자인학과</option>
+									<option value="중국어학과">중국어학과</option>
+									<option value="식품영양학과">식품영양학과</option>
 								</select> </li>
-						<li class="join_li"><span>�̸�</span>  <input type="text" name="name"></li>
-						<li class="join_but"><input type="submit" value="ȸ������"><a href="login.jsp">�α��� ������</a></li>
+						<li class="join_li"><span>이름</span>  <input type="text" name="name"></li>
+						<li class="join_but"><input type="submit" value="회원가입"><a href="login.jsp">로그인 페이지</a></li>
 					</ul>
 				</form>
 			</div>

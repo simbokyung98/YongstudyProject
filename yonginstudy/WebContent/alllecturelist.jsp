@@ -1,11 +1,11 @@
 <%@page import="yong.vo.Lecture"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	*{
@@ -90,14 +90,14 @@
 	</header>
 	<main id="alllecturmain">
 		<aside id="alllectureaside">
-			<div id="ale_h3"><h3>¡Ü °­ÀÇ½Ç ¸ñ·Ï ¡Ü</h3></div>
+			<div id="ale_h3"><h3>â— ê°•ì˜ì‹¤ ëª©ë¡ â—</h3></div>
 			<div id="alt_hrefwrap">
 				<ul>
 					<li id="alt-border"><a href="lectureSearch.do">ALL</a></li>
-					<li><a href="lectureSearch.do?job=mirror">°Å¿ï¿¬½À½Ç</a></li>
-					<li><a href="lectureSearch.do?job=gang">Ã¥»óÇü°­ÀÇ½Ç</a></li>
-					<li><a href="lectureSearch.do?job=computer">ÄÄÇ»ÅÍ½Ç</a></li>
-					<li><a href="lectureSearch.do?job=judo">ÈÆ·ÃÀå</a></li>
+					<li><a href="lectureSearch.do?job=mirror">ê±°ìš¸ì—°ìŠµì‹¤</a></li>
+					<li><a href="lectureSearch.do?job=gang">ì±…ìƒí˜•ê°•ì˜ì‹¤</a></li>
+					<li><a href="lectureSearch.do?job=computer">ì»´í“¨í„°ì‹¤</a></li>
+					<li><a href="lectureSearch.do?job=judo">í›ˆë ¨ìž¥</a></li>
 				</ul>
 			</div>
 		</aside>
@@ -116,7 +116,7 @@
 						</div>
 						<div>
 							<div class="altf_title"><%=lecture.getTitle() %></div>
-							<div class="altf_location">Àå¼Ò : <%=lecture.getCollege() %></div>
+							<div class="altf_location">ìž¥ì†Œ : <%=lecture.getCollege() %></div>
 						</div>	
 					</div></a>
 		<%	 	}	

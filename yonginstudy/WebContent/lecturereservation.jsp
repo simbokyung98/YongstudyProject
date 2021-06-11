@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	#lefture_detil_main{
@@ -133,49 +133,49 @@
 	
 </style>
 <script type="text/javascript">
-	var today = new Date();//¿À´Ã ³¯Â¥
-	var date = new Date();// today¸¦ ¼¼¾îÁÙ²¨ÀÓ
+	var today = new Date();//ì˜¤ëŠ˜ ë‚ ì§œ
+	var date = new Date();// todayë¥¼ ì„¸ì–´ì¤„êº¼ì„
 	
-	function buildCalendar(){//ÇöÀç ´Ş ´Ş·Â ¸¸µé±â
+	function buildCalendar(){//í˜„ì¬ ë‹¬ ë‹¬ë ¥ ë§Œë“¤ê¸°
 		var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-		//new¸¦ ¾²¸é +1À» ÇØÁÖÁö ¾Ê¾Æµµ ´ŞÀ» Á¤È®ÇÏ°Ô ¹Ş¾Æ¿È
-		//ÀÌ¹ø´Ş Ã¹Â°³¯ °¡Á®¿À±â
+		//newë¥¼ ì“°ë©´ +1ì„ í•´ì£¼ì§€ ì•Šì•„ë„ ë‹¬ì„ ì •í™•í•˜ê²Œ ë°›ì•„ì˜´
+		//ì´ë²ˆë‹¬ ì²«ì§¸ë‚  ê°€ì ¸ì˜¤ê¸°
 		var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0);
-		//getMonth()+1 À» ½á¼­ ´ÙÀ½´ŞÀ» °¡Á®¿À°í 0À» °¡Á®¿À°ÔÇØ¼­ ÀÌ¹ø´Ş ¸¶Áö¸·³¯ ¼ÒÈ¯
+		//getMonth()+1 ì„ ì¨ì„œ ë‹¤ìŒë‹¬ì„ ê°€ì ¸ì˜¤ê³  0ì„ ê°€ì ¸ì˜¤ê²Œí•´ì„œ ì´ë²ˆë‹¬ ë§ˆì§€ë§‰ë‚  ì†Œí™˜
 		var tbCalendar = document.getElementById("calendar");
-		//³¯Â¥ ÂïÀ» Å×ÀÌºí º¯¼ö ¸¸µé±â ÀÏ±îÁö ´Ù ÂïÈ÷°Ô
+		//ë‚ ì§œ ì°ì„ í…Œì´ë¸” ë³€ìˆ˜ ë§Œë“¤ê¸° ì¼ê¹Œì§€ ë‹¤ ì°íˆê²Œ
 		var tbCalendarYM = document.getElementById("tbCalendarYM");
-		//Å×ÀÌºí¿¡ Á¤È®ÇÑ ³¯Â¥¸¦ ÂïÀ» º¯¼ö
-		tbCalendarYM.innerHTML = "<span id='y'>"+today.getFullYear()+"</span>" + "³â" + "<span id='m'>"+ (today.getMonth()+1)+"</span>¿ù";
+		//í…Œì´ë¸”ì— ì •í™•í•œ ë‚ ì§œë¥¼ ì°ì„ ë³€ìˆ˜
+		tbCalendarYM.innerHTML = "<span id='y'>"+today.getFullYear()+"</span>" + "ë…„" + "<span id='m'>"+ (today.getMonth()+1)+"</span>ì›”";
 		tbCalendarYM.style.fontFamily = 'ELAND_Choice_L';
 		tbCalendarYM.style.fontSize = "20px";
-		//innerHTML : js¸¦ html Çü½ÄÀ¸·Î º¯°æ
-		// ÇØ´ç ´Ş ¿¬µµ¿Í ´ŞÀ» Ç¥½Ã
+		//innerHTML : jsë¥¼ html í˜•ì‹ìœ¼ë¡œ ë³€ê²½
+		// í•´ë‹¹ ë‹¬ ì—°ë„ì™€ ë‹¬ì„ í‘œì‹œ
 		
 		
 		var row = null;
 		row = tbCalendar.insertRow();
-		//Å×ÀÌºí¿¡ »õ·Î¿î ¿­ »ğÀÔ ÇÏ¿© ÃÊ±âÈ­
+		//í…Œì´ë¸”ì— ìƒˆë¡œìš´ ì—´ ì‚½ì… í•˜ì—¬ ì´ˆê¸°í™”
 		var cnt = 0;
-		//count ·Î¼­ ¼¿ÀÇ °¹¼ö¸¦ ¼¼¾îÁÙ²¨ÀÓ
+		//count ë¡œì„œ ì…€ì˜ ê°¯ìˆ˜ë¥¼ ì„¸ì–´ì¤„êº¼ì„
 		
 		for(i=0;i<doMonth.getDay();i++){
-			//ÀÌ¹ø´Ş day¼ö ¸¸Å­ µ¹¸²
-			cell = row.insertCell();//¿­ ÇÑÄ­ÇÑÄ­ °è¼Ó ¸¸µé¾îÁÖ´Â ¿ªÇÒ
-			cnt = cnt +1; //¿­ÀÇ À§Ä¡ ´ÙÀ½À¸·Î À§Ä¡
+			//ì´ë²ˆë‹¬ dayìˆ˜ ë§Œí¼ ëŒë¦¼
+			cell = row.insertCell();//ì—´ í•œì¹¸í•œì¹¸ ê³„ì† ë§Œë“¤ì–´ì£¼ëŠ” ì—­í• 
+			cnt = cnt +1; //ì—´ì˜ ìœ„ì¹˜ ë‹¤ìŒìœ¼ë¡œ ìœ„ì¹˜
 		}
-		//´Ş·Â Ãâ·Â
+		//ë‹¬ë ¥ ì¶œë ¥
 		for (i=1;i<=lastDate.getDate();i++){
 			cell = row.insertCell();
-			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='cal_but'><button value="+i+">+</button></div>"; //¼¿ÀÇ 0ºÎÅÍ ¸¶Áö¸· µ¥ÀÌ±îÁö HTML ¹®¹ı ³Ö±â
-			cnt = cnt+1;//¿­ÀÇ À§Ä¡ ´ÙÀ½Ä­À¸·Î
+			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='cal_but'><button value="+i+">+</button></div>"; //ì…€ì˜ 0ë¶€í„° ë§ˆì§€ë§‰ ë°ì´ê¹Œì§€ HTML ë¬¸ë²• ë„£ê¸°
+			cnt = cnt+1;//ì—´ì˜ ìœ„ì¹˜ ë‹¤ìŒì¹¸ìœ¼ë¡œ
 			if(cnt %7 == 1){
-				//ÀÏ¿äÀÏ ±¸ÇÏ±â
+				//ì¼ìš”ì¼ êµ¬í•˜ê¸°
 				cell.innerHTML = "<div class='butval' value="+i+"><font color = red>" + i+"</div><div class='cal_but'><button value="+i+">+</button></div>";
-				//7¹øÂ° cell¿¡¸¸ »öÄ¥
+				//7ë²ˆì§¸ cellì—ë§Œ ìƒ‰ì¹ 
 			}
 			if(cnt%7 == 0){
-				//Åä¿äÀÏ ±¸ÇÏ±â
+				//í† ìš”ì¼ êµ¬í•˜ê¸°
 				cell.innerHTML ="<div class='butval' value="+i+"><font color=skyblue>" + i+"</div><div class='cal_but'><button value="+i+">+</button></div>";
 				row = calendar.insertRow();
 			}
@@ -220,14 +220,14 @@
 	<main id="lefture_detil_main">
 		<section>
 			<div id="letde_title">
-				°­ÀÇ½Ç ¿¹¾à
+				ê°•ì˜ì‹¤ ì˜ˆì•½
 			</div>
 			<div>
 			<div class="edidi_content con1">
 				<table id="calendar">
 					<tr>					
-						<td id="tbCalendarYM">yyyy³â m¿ù</td>
-						<td colspan="6" id="cal_notion">*¿¹¾àÀº ÇØ´ç ´Ş¸¸ ¹Ş½À´Ï´Ù</td>
+						<td id="tbCalendarYM">yyyyë…„ mì›”</td>
+						<td colspan="6" id="cal_notion">*ì˜ˆì•½ì€ í•´ë‹¹ ë‹¬ë§Œ ë°›ìŠµë‹ˆë‹¤</td>
 					</tr>
 				</table>
 				<script language="javascript" type="text/javascript">
@@ -268,13 +268,13 @@
 		<aside>
 			<div id="option_wrap">
 				<div id="option_title">
-					<h1>°Å¿ï¿¬½À½Ç 1</h1>
-					<p>Àå¼Ò : ¹®È­¿¹¼ú´ëÇĞ 4Ãş 3°­ÀÇ½Ç</p>
+					<h1>ê±°ìš¸ì—°ìŠµì‹¤ 1</h1>
+					<p>ì¥ì†Œ : ë¬¸í™”ì˜ˆìˆ ëŒ€í•™ 4ì¸µ 3ê°•ì˜ì‹¤</p>
 				</div>
 				<ul id="option_ul">
-					<li id="option_ymd">2021³â 6¿ù 30ÀÏ</li>
-					<li id="option_time">ÃÑ <span style="font-weight: bold; font-size: 30px;"> 2 </span> ½Ã°£</li>
-					<li id="option_but"><button type="submit">¿¹¾àÇÏ±â</button> </li>
+					<li id="option_ymd">2021ë…„ 6ì›” 30ì¼</li>
+					<li id="option_time">ì´ <span style="font-weight: bold; font-size: 30px;"> 2 </span> ì‹œê°„</li>
+					<li id="option_but"><button type="submit">ì˜ˆì•½í•˜ê¸°</button> </li>
 				</ul>
 			</div>
 		</aside>

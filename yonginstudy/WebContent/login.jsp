@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	@font-face {
@@ -85,7 +85,7 @@
 <script type="text/javascript">
 	function check(loginuser) {
 		if (loginuser.id.value.length == 0 || loginuser.pwd.value.length == 0){
-			alter("¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¿©ÁÖ¼¼¿ä");
+			alter("ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì—¬ì£¼ì„¸ìš”");
 			return false;
 		}
 	}
@@ -94,7 +94,7 @@
 <body>
 	<main id="login_main">			
 		<div id="login_wrap">
-			<h1 id="login_title">YONG ½ºÅÍµğ</h1>
+			<h1 id="login_title">YONG ìŠ¤í„°ë””</h1>
 		
 			<div id="login_contents">
 				<form action="login.do" method="post" onsubmit="return check(this)">
@@ -108,8 +108,8 @@
 				</form>
 			</div>
 			<div id="login_link_wrap">
-				<a href="join.jsp" class="login_link" style="margin:0 80px 0 10px;">È¸¿ø°¡ÀÔ</a>
-				<a href="#" class="login_link">ID/PW Ã£±â</a>
+				<a href="join.jsp" class="login_link" style="margin:0 80px 0 10px;">íšŒì›ê°€ì…</a>
+				<a href="#" class="login_link">ID/PW ì°¾ê¸°</a>
 			</div>
 		</div>
 	</main>

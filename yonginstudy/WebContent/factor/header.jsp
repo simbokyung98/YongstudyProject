@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 	@font-face {
@@ -136,19 +136,19 @@
 	<div id="header_wrap">
 		<div id="up_menu">
 			<ul id="top_menu">
-				<li><a href="#" class="top_li"> �α׾ƿ� </a></li>
-				<li><a href="#" class="top_li"> ���������� </a></li>
+				<li><a href="Logout.do" class="top_li"> 로그아웃 </a></li>
+				<li><a href="#" class="top_li"> 마이페이지 </a></li>
 			</ul>
 		</div>
 		<nav id="menu">
 			<div id="logo_menu">
-				<a href="/yonginstudy/main.jsp"><img alt="�ΰ��̹���" src="/yonginstudy/img/logo.png"></a>
+				<a href="/yonginstudy/main.jsp"><img alt="로고이미지" src="/yonginstudy/img/logo.png"></a>
 			</div>
 			<ul id="main_menu">
-				<li><a href="#">YONG ���͵�</a></li>
-				<li><a href="lectureSearch.do">���ǽǿ���</a></li>
-				<li><a href="#">Ŀ�´�Ƽ</a></li>
-				<li><a href="#">���͵����</a></li>
+				<li><a href="#">YONG 스터디</a></li>
+				<li><a href="lectureSearch.do">강의실예약</a></li>
+				<li><a href="notionlist.do">커뮤니티</a></li>
+				<li><a href="studylist.do">스터디모집</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -156,28 +156,27 @@
 		<ul id="down_ul">
 			<li class="dowm_liwrap first">
 				<ul class="dowm_factor">
-					<li><a href="#">Yong ���͵� ����</a></li>
-					<li><a href="#">ķ�۽� �ȳ�</a></li>
+					<li><a href="#">Yong 스터디 설명</a></li>
+					<li><a href="#">캠퍼스 안내</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">
 				<ul class="dowm_factor">
-					<li><a href="lectureSearch.do?job=mirror">�ſﰭ�ǽ�</a></li>
-					<li><a href="lectureSearch.do?job=judo">�Ʒ���</a></li>
-					<li><a href="lectureSearch.do?job=gang">å���� ���ǽ�</a></li>
-					<li><a href="lectureSearch.do?job=computer">��ǻ�ͽ�</a></li>
+					<li><a href="lectureSearch.do?job=mirror">거울강의실</a></li>
+					<li><a href="lectureSearch.do?job=judo">훈련장</a></li>
+					<li><a href="lectureSearch.do?job=gang">책상형 강의실</a></li>
+					<li><a href="lectureSearch.do?job=computer">컴퓨터실</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">
 				<ul class="dowm_factor">
-					<li><a href="#">��������</a></li>
+					<li><a href="notionlist.do">공지사항</a></li>
 					<li><a href="#">Q&A</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">
 				<ul class="dowm_factor">
-					<li><a href="#">���͵� ���</a></li>
-					<li><a href="#">���͵� ����</a></li>
+					<li><a href="studylist.do">스터디 목록</a></li>
 				</ul>
 			</li>
 		</ul>
