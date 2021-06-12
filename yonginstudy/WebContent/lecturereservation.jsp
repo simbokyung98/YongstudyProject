@@ -56,22 +56,17 @@
 	#caldetail_wrap{
 		clear: left;
 		float: left;
-		width: 600px;
+		width: 620px;
 		height: 250px;
 		background: #E7E4DD;
-		padding: 10px 0 0 80px;
+		padding: 20px 0 0 60px;
 		margin: 10px 0 10px 10px;
 		
 	}
 	.calde_li{
 		float: left;
 	}
-	.calde_inside_ul li{
-		width: 150px;
-		height: 50px;		
-		text-align: center;
-		margin: 10px;
-	}
+	
 	.calinsidebut{
 		width: 150px;
 		height: 50px;
@@ -89,7 +84,7 @@
 		height: 500px;
 		background: #E7E4DD;
 		float: right;
-		margin: 50px 60px 0 0;
+		margin: 50px 0 0 0;
 	}
 	#option_title{
 		width: 350px;
@@ -114,7 +109,7 @@
 		font-size: 20px;
 		margin: 20px 0 20px 0;
 	}
-	#option_but button{
+	.option_butinput{
 		border: 3px solid #88A67E;
 		color: #88A67E;
 		width: 300px;
@@ -130,7 +125,50 @@
 	#caldetail_wrap{
 		display: none;
 	}
-	
+	.calde_inside_ul li{
+		margin: 10px;
+	}
+	.calde_inside_ul li .calde_check_label{
+		width: 120px;
+		height: 40px;		
+		text-align: center;
+		margin: 10px 20px 15px 20px;
+		cursor: pointer;
+  		display: flex;
+  		
+	}
+	.calde_check_label input[type="checkbox"]{
+		display: none;
+	}
+	.time_check{
+		position: relative;
+  		isplay: flex;
+ 		 width: 150px;
+ 		 flex-direction: column;
+ 		 align-items: center;
+ 		 background-color: white;
+ 		 border: 2px solid #88A67E;
+ 		 color: #88A67E;
+ 		 font-size: 18px;
+ 		 transition: 0.5s;
+ 		 user-select: none;
+ 		 padding-top: 5px;
+	}
+	.calde_check_label input[type="checkbox"]:checked ~ .time_check{
+		background: red;
+  		color: #fff;
+  		border: 2px solid red;
+`	}
+	.container .btn {
+		  width: 130px;
+		  height: 40px;
+		  position: absolute;
+		  left: 550px;
+		  font-size: 16px;
+		  border: 0;
+		  outline: none;
+		  transition: 0.1s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+	}
 </style>
 <script type="text/javascript">
 	var today = new Date();//오늘 날짜
@@ -167,16 +205,16 @@
 		//달력 출력
 		for (i=1;i<=lastDate.getDate();i++){
 			cell = row.insertCell();
-			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='cal_but'><button value="+i+">+</button></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
+			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='cal_but'><button value="+i+" type='button'>+</button></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
 			cnt = cnt+1;//열의 위치 다음칸으로
 			if(cnt %7 == 1){
 				//일요일 구하기
-				cell.innerHTML = "<div class='butval' value="+i+"><font color = red>" + i+"</div><div class='cal_but'><button value="+i+">+</button></div>";
+				cell.innerHTML = "<div class='butval' value="+i+"><font color = red>" + i+"</div><div class='cal_but'><button value="+i+" type='button'>+</button></div>";
 				//7번째 cell에만 색칠
 			}
 			if(cnt%7 == 0){
 				//토요일 구하기
-				cell.innerHTML ="<div class='butval' value="+i+"><font color=skyblue>" + i+"</div><div class='cal_but'><button value="+i+">+</button></div>";
+				cell.innerHTML ="<div class='butval' value="+i+"><font color=skyblue>" + i+"</div><div class='cal_but'><button value="+i+" type='button'>+</button></div>";
 				row = calendar.insertRow();
 			}
 			cell.style.border = "1px solid gray";
@@ -199,6 +237,9 @@
 					var hid = $('#hiden').html();
 					$(this).parent().parent().parent().parent().after("<tr class='chose'><td colspan='7'>"+ hid+"</td></tr>"); 
 					$('#caldetail_wrap').css("display", "block");
+					 document.getElementById('option_ymd').innerText = year + "년" + month + "월" + day + "일";
+					 $('#bookdate').val(year + "년" + month + "월" + day + "일");
+					
 					
 			   }else{
 				   $('tr').remove('.chose');
@@ -218,6 +259,7 @@
 		<%@ include file="factor/header.jsp" %>
 	</header>
 	<main id="lefture_detil_main">
+		<form action="lecturebook.do" method="post">
 		<section>
 			<div id="letde_title">
 				강의실 예약
@@ -235,30 +277,108 @@
 				</script>
 				
 			</div>
+		
 			<div id="hiden">
 				<div id="caldetail_wrap">
-					<ul>
+					<ul class="container">
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li><input type="button" value="09:00" class="calinsidebut"></li>
-								<li><input type="button" value="10:00" class="calinsidebut"></li>
-								<li><input type="button" value="11:00" class="calinsidebut"></li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="09:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오전 09:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="10:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오전 10:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="11:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오전 11:00</span>
+								</div>
+								</label>
+								</li>
 							</ul>
 						</li>
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li><input type="button" value="12:00" class="calinsidebut"></li>
-								<li><input type="button" value="13:00" class="calinsidebut"></li>
-								<li><input type="button" value="14:00" class="calinsidebut"></li>
-								<li><input type="button" value="15:00" class="calinsidebut"></li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="12:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 12:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="13:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 1:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="14:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 2:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="15:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 3:00</span>
+								</div>
+								</label>
+								</li>
 							</ul>
 						</li>
 						<li class="calde_li">
 							<ul class="calde_inside_ul">
-								<li><input type="button" value="16:00" class="calinsidebut"></li>
-								<li><input type="button" value="17:00" class="calinsidebut"></li>
-								<li><input type="button" value="18:00" class="calinsidebut"></li>
-								<li><input type="button" value="19:00" class="calinsidebut"></li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="16:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 4:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="17:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 5:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="18:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 6:00</span>
+								</div>
+								</label>
+								</li>
+								<li>
+								<label class="calde_check_label">
+								<input type="checkbox" value="19:00" class="calinsidebut" name="time" onclick='getCheckedCnt()'/>
+								<div class="time_check">
+									<span>오후 7:00</span>
+								</div>
+								</label>
+								</li>
 							</ul>
 						</li>
 					</ul>
@@ -268,16 +388,37 @@
 		<aside>
 			<div id="option_wrap">
 				<div id="option_title">
-					<h1>거울연습실 1</h1>
-					<p>장소 : 문화예술대학 4층 3강의실</p>
+					<h1>${lecture.title }</h1>
+					<p>장소 : ${lecture.college }  ${lecture.location }</p>
 				</div>
 				<ul id="option_ul">
-					<li id="option_ymd">2021년 6월 30일</li>
-					<li id="option_time">총 <span style="font-weight: bold; font-size: 30px;"> 2 </span> 시간</li>
-					<li id="option_but"><button type="submit">예약하기</button> </li>
+					<li id="option_ymd">0000년 00월 00일</li>
+					<li id="option_time">총 <span style="font-weight: bold; font-size: 30px;" id="result">  </span> 시간</li>
+					<li id="option_but">
+					<input type="hidden" value="${lecture.title }" name="lecturename">
+					<input type="hidden" name="bookdate" id="bookdate">
+					<input type="submit" value="예약하기" class="option_butinput"></li>
 				</ul>
 			</div>
+		
 		</aside>
+		</form>
+		<script type="text/javascript">
+			 function getCheckedCnt()  {
+			  // 선택된 목록 가져오기
+			  const query = 'input[name="time"]:checked';
+			  const selectedElements = 
+			      document.querySelectorAll(query);
+			  
+			  // 선택된 목록의 갯수 세기
+			  const selectedElementsCnt =
+			        selectedElements.length;
+			  
+			  // 출력
+			  document.getElementById('result').innerText
+			    = selectedElementsCnt;
+			}
+		</script>
 	</main>
 	<footer>
 		<%@ include file="factor/footer.jsp" %>

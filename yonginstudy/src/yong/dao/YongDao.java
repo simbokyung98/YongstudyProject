@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import yong.vo.Lecture;
+import yong.vo.LectureBook;
 import yong.vo.Notion;
 import yong.vo.Study;
 import yong.vo.StudyApply;
@@ -226,6 +227,7 @@ public class YongDao {
 				lecture.setMaxpeople(rs.getInt(5));
 				lecture.setCount(rs.getInt(6));
 				lecture.setCategory(rs.getString(7));
+				lecture.setDetail(rs.getString(8));
 			}
 		}catch (Exception e) {
 			System.out.println("Join error : " + e);
@@ -467,6 +469,25 @@ public class YongDao {
 			close(conn, pstmt, rs);
 		}
 		return notion;
+	}
+	public void lecturebook(LectureBook lectureBook) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("insert into lecturebook(userid, lecturename, bookdate, booktime, confirm) values(?,?,?,?,?);");
+			pstmt.setString(1, lectureBook.getUserid());
+			pstmt.setString(2, lectureBook.getLecturename());
+			pstmt.setString(3, lectureBook.getBookdate());
+			pstmt.setString(4, lectureBook.getBooktime());
+			pstmt.setString(5, lectureBook.getConfirm());
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt);
+		}
+		
 	}
 
 }

@@ -21,6 +21,7 @@ public class FrontController extends HttpServlet{
 		map.put("/Logout.do", new LogoutController());
 		map.put("/lectureSearch.do", new LectureSearchController());
 		map.put("/lecturedetail.do", new LectureDetailController());
+		map.put("/lecturebook.do", new LectureBookController());
 		map.put("/studywrite.do", new StudyWriteController());
 		map.put("/studylist.do", new StudyListController());
 		map.put("/studyview.do", new StudyViewController());

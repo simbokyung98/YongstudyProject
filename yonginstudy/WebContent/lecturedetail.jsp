@@ -100,7 +100,7 @@
 						</ul>
 					</div>
 					<div id="letde_conbut">
-						<button  onclick="location.href='lecturereservation.jsp' ">에약하기</button>
+						<button  onclick="location.href='lecturedetail.do?detail=${lecture.detail}&job=reservation'">예약하기</button>
 					</div>
 				</div>
 			</div>

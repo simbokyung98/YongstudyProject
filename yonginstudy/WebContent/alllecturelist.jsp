@@ -110,7 +110,7 @@
 					Lecture lecture = lectures.get(i);
 				
 		%>
-					<a href="lecturedetail.do?detail=<%=lecture.getDetail()%>" class="lec_detail_but"><div class="altfactor_wrap">
+					<a href="lecturedetail.do?detail=<%=lecture.getDetail()%>&job=detail" class="lec_detail_but"><div class="altfactor_wrap">
 						<div>
 							<img alt="mirror" src="img/<%=lecture.getImg()%>" class="alt_img">
 						</div>

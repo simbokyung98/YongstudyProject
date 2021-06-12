@@ -20,12 +20,20 @@ public class LectureDetailController implements Controller {
 		
 		
 		String detail = request.getParameter("detail");
+		String job = request.getParameter("job");
 		Service s = Service.getInstance();
 		Lecture lecture = s.lecturedetail(detail);
 		
 		request.setAttribute("lecture", lecture);
+		String path = null;
+		if(job.equals("detail")) {
+			path = "/lecturedetail.jsp";
+		}else if(job.equals("reservation")){
+			path = "/lecturereservation.jsp";
+			
+		}
 		
-		HttpUtil.forward(request, response, "/lecturedetail.jsp");
+		HttpUtil.forward(request, response, path);
 		
 		
 

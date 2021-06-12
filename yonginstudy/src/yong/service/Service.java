@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import yong.dao.YongDao;
 import yong.vo.Lecture;
+import yong.vo.LectureBook;
 import yong.vo.Notion;
 import yong.vo.Study;
 import yong.vo.StudyApply;
@@ -74,6 +75,10 @@ public class Service {
 	public Notion notionview(String key) {
 		Notion notion = dao.notionview(key);
 		return notion;
+	}
+	public void lecturebook(LectureBook lectureBook) {
+		dao.lecturebook(lectureBook);
+		
 	}
 	
 	
