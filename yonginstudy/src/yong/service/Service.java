@@ -80,6 +80,42 @@ public class Service {
 		dao.lecturebook(lectureBook);
 		
 	}
+	public ArrayList<Lecture> userlectureA(String userid) {
+		 ArrayList<Lecture> lectures = dao.userlectureA(userid);
+		return lectures;
+	}
+	public ArrayList<LectureBook> userlectureB(String userid) {
+		ArrayList<LectureBook> lectures = dao.userlectureB(userid);
+		return lectures;
+	}
+	public ArrayList<LectureBook> userlecturetime(String title) {
+		ArrayList<LectureBook> lecturetimes = dao.userlecturetime(title);
+		return  lecturetimes;
+	}
+	public User searchuser(String userid) {
+		User user = dao.searchuser(userid);
+		return user;
+	}
+	public ArrayList<Study> userStudySearch(String userid) {
+		ArrayList<Study> studies = dao.userStudySearch(userid);
+		return studies;
+	}
+	public ArrayList<User> studyapplyuserU(int studykey) {
+		ArrayList<User> users = dao.studyapplyuserU(studykey);
+		return users;
+	}
+	public ArrayList<StudyApply> studyapplyuserA(int studykey) {
+		ArrayList<StudyApply> applies = dao.studyapplyuserA(studykey);
+		return applies;
+	}
+	public ArrayList<Study> applyuserSearch(String userid) {
+		ArrayList<Study> applysuerstudy = dao.applyuserSearch(userid);
+		return applysuerstudy;
+	}
+	public void usercanclestudy(String userid, String studykey) {
+		dao.usercanclestudy(userid,studykey);
+		
+	}
 	
 	
 

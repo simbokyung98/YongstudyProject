@@ -135,12 +135,13 @@ public class YongDao {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			pstmt = conn.prepareStatement("insert into user values(?,?,?,?,?);");
+			pstmt = conn.prepareStatement("insert into user values(?,?,?,?,?,?);");
 			pstmt.setInt(1, user.getUserclass());
 			pstmt.setString(2, user.getId());
 			pstmt.setString(3, user.getPwd());
 			pstmt.setString(4, user.getName());
 			pstmt.setString(5, user.getMajor());
+			pstmt.setString(6, user.getPhone());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			System.out.println("Join error : " + e);
@@ -355,6 +356,7 @@ public class YongDao {
 		}
 		return applypeople;
 	}
+	
 	public boolean comcompleted(int studykey, String userid) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -484,6 +486,223 @@ public class YongDao {
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt);
+		}
+		
+	}
+	public ArrayList<Lecture> userlectureA(String userid) {
+		ArrayList<Lecture> lectures = new ArrayList<Lecture>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Lecture lecture = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select distinct(a.img), a.college, a.location, a.title from lecture a, lecturebook b where b.userid = ? and a.title = b.lecturename;");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lecture = new Lecture();
+				lecture.setImg(rs.getString(1));
+				lecture.setCollege(rs.getString(2));
+				lecture.setLocation(rs.getString(3));
+				lecture.setTitle(rs.getString(4));
+				lectures.add(lecture);
+			}
+		}catch (Exception e) {
+			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lectures;
+	}
+	public ArrayList<LectureBook> userlectureB(String userid) {
+		ArrayList<LectureBook> lectureBooks = new ArrayList<LectureBook>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LectureBook lectureBook = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select distinct(b.lecturename), b.bookdate, b.confirm from lecture a, lecturebook b where b.userid = ? and a.title = b.lecturename;");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lectureBook = new LectureBook();
+				lectureBook.setLecturename(rs.getString(1));
+				lectureBook.setBookdate(rs.getString(2));
+				lectureBook.setConfirm(rs.getString(3));
+				lectureBooks.add(lectureBook);
+			}
+		}catch (Exception e) {
+			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lectureBooks;
+	}
+	public ArrayList<LectureBook> userlecturetime(String title) {
+		ArrayList<LectureBook> lecturetimes = new ArrayList<LectureBook>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LectureBook lectureBook = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select lecturename,booktime from lecturebook where lecturename = ?;");
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lectureBook = new LectureBook();
+				lectureBook.setLecturename(rs.getString(1));
+				lectureBook.setBooktime(rs.getString(2));
+				lecturetimes.add(lectureBook);
+			}
+		}catch (Exception e) {
+			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lecturetimes;
+	}
+	public User searchuser(String userid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select * from user where id=?;");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setUserclass(rs.getInt(1));
+				user.setId(rs.getString(2));
+				user.setPwd(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setMajor(rs.getString(5));
+				user.setPhone(rs.getString(6));
+			}
+		}catch (Exception e) {
+			System.out.println("searchuser error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return user;
+	}
+	public ArrayList<Study> userStudySearch(String userid) {
+		ArrayList<Study> studies = new ArrayList<Study>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Study study = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select studykey, title, location, maxpeople from study where user=?;");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				study = new Study();
+				study.setStudykey(rs.getInt(1));
+				study.setTitle(rs.getString(2));
+				study.setLocation(rs.getString(3));
+				study.setMaxpeople(rs.getInt(4));
+				studies.add(study);
+			}
+		}catch (Exception e) {
+			System.out.println("userStudySearch error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return studies;
+	}
+	public ArrayList<User> studyapplyuserU(int studykey) {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select a.name, a.major, a.phone from  user a, studyapply b where b.studykey = ? and a.id = b.userid;");
+			pstmt.setInt(1, studykey);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setName(rs.getString(1));
+				user.setMajor(rs.getString(2));
+				user.setPhone(rs.getString(3));
+				users.add(user);
+			}
+		}catch (Exception e) {
+			System.out.println("studyapplyuserU error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return users;
+	}
+	public ArrayList<StudyApply> studyapplyuserA(int studykey) {
+		ArrayList<StudyApply> applies = new ArrayList<StudyApply>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StudyApply apply = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select b.application from  user a, studyapply b where b.studykey = ? and a.id = b.userid;");
+			pstmt.setInt(1, studykey);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				apply = new StudyApply();
+				apply.setApplocation(rs.getString(1));
+				applies.add(apply);
+			}
+		}catch (Exception e) {
+			System.out.println("studyapplyuserA error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return applies;
+	}
+	public ArrayList<Study> applyuserSearch(String userid) {
+		ArrayList<Study> applysuerstudy = new ArrayList<Study>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Study study = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select a.studykey, a.title, a.major, a.maxpeople from study a, studyapply b where b.userid = ? and a.studykey = b.studykey;");
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				study = new Study();
+				study.setStudykey(rs.getInt(1));
+				study.setTitle(rs.getString(2));
+				study.setMajor(rs.getString(3));
+				study.setMaxpeople(rs.getInt(4));
+				applysuerstudy.add(study);
+			}
+		}catch (Exception e) {
+			System.out.println("applyuserSearch error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return applysuerstudy;
+	}
+	public void usercanclestudy(String userid, String studykey) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("delete from studyapply where userid = ? and studykey = ?;");
+			pstmt.setString(1, userid);
+			pstmt.setString(2, studykey);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("usercanclestudy error : " + e);
 		}finally {
 			close(conn, pstmt);
 		}

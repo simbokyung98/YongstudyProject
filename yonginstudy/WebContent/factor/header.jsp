@@ -137,7 +137,7 @@
 		<div id="up_menu">
 			<ul id="top_menu">
 				<li><a href="Logout.do" class="top_li"> 로그아웃 </a></li>
-				<li><a href="#" class="top_li"> 마이페이지 </a></li>
+				<li><a href="userlecture.do" class="top_li"> 마이페이지 </a></li>
 			</ul>
 		</div>
 		<nav id="menu">

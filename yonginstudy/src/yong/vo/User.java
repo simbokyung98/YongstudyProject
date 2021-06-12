@@ -2,21 +2,23 @@ package yong.vo;
 
 public class User {
 	
-	private int userclass;	//회원 학번
-	private String id; 			//회원 아이디
-	private String pwd;			//회원 비밀번호
-	private String name;		//회원 이름
-	private String major;		//회원 학과
+	private int userclass;	
+	private String id; 			
+	private String pwd;			
+	private String name;		
+	private String major;
+	private String phone;
 	
 	public User() {}
 	
 	
-	public User(int userclass, String id, String pwd, String name, String major) {
+	public User(int userclass, String id, String pwd, String name, String major, String phone) {
 		this.userclass = userclass;
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.major = major;
+		this.phone = phone;
 	}
 	
 	public int  getUserclass() {
@@ -49,6 +51,13 @@ public class User {
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 	
 	
 

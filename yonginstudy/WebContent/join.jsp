@@ -79,6 +79,8 @@
 		.join_li input, .join_li select{
 			width: 200px;
 			height: 30px;
+			padding-left: 10px;
+			font-family: 'ELAND_Choice_L';
 		}
 		.join_but input{
 			width: 150px;
@@ -97,6 +99,7 @@
 		.join_but a:hover {
 			color: #064420;
 		}
+		
 	</style>
 	
 </head>
@@ -120,6 +123,7 @@
 									<option value="식품영양학과">식품영양학과</option>
 								</select> </li>
 						<li class="join_li"><span>이름</span>  <input type="text" name="name"></li>
+						<li class="join_li"><span>번호</span>  <input type="text" name="phone" placeholder="010-0000-0000 형식"></li>
 						<li class="join_but"><input type="submit" value="회원가입"><a href="login.jsp">로그인 페이지</a></li>
 					</ul>
 				</form>

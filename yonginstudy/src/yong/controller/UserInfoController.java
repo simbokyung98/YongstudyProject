@@ -5,31 +5,26 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import yong.service.Service;
 import yong.vo.User;
 
-public class JoinController implements Controller {
+public class UserInfoController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		int userclass = Integer.parseInt(request.getParameter("userclass"));
-		String major = request.getParameter("major");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		
-		User user = new User(userclass, id, pwd, name, major, phone); 
+		HttpSession session = request.getSession();
+		String userid = (String)session.getAttribute("id");
 		
 		Service s = Service.getInstance();
-		s.join(user);
+		User user = s.searchuser(userid);
 		
-		HttpUtil.forward(request, response, "/login.jsp");
+		request.setAttribute("user", user);
+		HttpUtil.forward(request, response, "/userinfomation.jsp");
 		
 
 	}

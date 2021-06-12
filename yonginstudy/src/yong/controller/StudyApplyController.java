@@ -32,16 +32,16 @@ public class StudyApplyController implements Controller {
 		boolean completed = s.comcompleted (studykey, userid);
 		
 		if(userid.equals(makeuserid)) {
-			request.setAttribute("result", "ÀÚ½ÅÀÌ ¸¸µç ½ºÅÍµğ¿£ ½ÅÃ»ÇÒ ¼ö ¾ø½À´Ï´Ù");
+			request.setAttribute("result", "ë³¸ì¸ì´ ë“±ë¡í•œ ìŠ¤í„°ë””ì—ëŠ” ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
 		}else {
 			if(completed) {
-				request.setAttribute("result", "ÀÌ¹Ì ½ÅÃ»ÇÑ ½ºÅÍµğ ÀÔ´Ï´Ù");
+				request.setAttribute("result", "ì´ë¯¸ ì‹ ì²­í•œ ìŠ¤í„°ë”” ì…ë‹ˆë‹¤");
 			}else {
 				if(applypeople >= maxpeople) {
-					request.setAttribute("result", "½ÅÃ» ÀÎ¿øÀ» ÃÊ°úÇÏ¿´½À´Ï´Ù");
+					request.setAttribute("result", "ìŠ¤í„°ë”” ì¸ì›ì´ ë§ˆê°ë˜ì—ˆìŠµë‹ˆë‹¤");
 				}else {
 					studyapplyuser = new StudyApply(studykey, userid, application );
-					request.setAttribute("result", "½ºÅÍµğ ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù");
+					request.setAttribute("result", "ìŠ¤í„°ë”” ì‹ ì²­ì„ ì™„ë£Œí•˜ì˜€ìŠµë‹ˆë‹¤");
 					
 					s.studyapply(studyapplyuser);
 				}

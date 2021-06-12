@@ -269,7 +269,7 @@
 				<table id="calendar">
 					<tr>					
 						<td id="tbCalendarYM">yyyy년 m월</td>
-						<td colspan="6" id="cal_notion">*예약은 해당 달만 받습니다</td>
+						<td colspan="6" id="cal_notion">*예약은 해당 달만 받습니다[6시간 까지 가능]</td>
 					</tr>
 				</table>
 				<script language="javascript" type="text/javascript">

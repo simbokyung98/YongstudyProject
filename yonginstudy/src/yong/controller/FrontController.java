@@ -29,6 +29,10 @@ public class FrontController extends HttpServlet{
 		map.put("/notionwrite.do", new NotionWriteController());
 		map.put("/notionlist.do", new NotionListController());
 		map.put("/notionview.do", new NotionViewController());
+		map.put("/userlecture.do", new UserLectureController());
+		map.put("/userinfo.do", new UserInfoController());
+		map.put("/userstudy.do", new UserStudyController());
+		map.put("/usercancelstudy.do", new UserCancelStudyController());
 	}
 	
 	@Override
