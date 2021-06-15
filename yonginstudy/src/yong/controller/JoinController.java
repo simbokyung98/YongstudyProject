@@ -30,7 +30,7 @@ public class JoinController implements Controller {
 		Service s = Service.getInstance();
 		String path = null;
 		
-		if(!update.isEmpty()) {
+		if(update != null) {
 			s.update(user);
 			path = "userinfo.do?job=all";
 		}else {

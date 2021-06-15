@@ -167,15 +167,14 @@
 				</thead>
 				<tbody>
 				<%
-						ArrayList<Lecture> lectures = (ArrayList<Lecture>)request.getAttribute("lectures");
 						ArrayList<LectureBook> lectureBooks = (ArrayList<LectureBook>)request.getAttribute("lectureBooks");
 						
-							if(!lectures.isEmpty()){
+							if(!lectureBooks.isEmpty()){
 								
-								for(int i=0;i<lectures.size();i++){
-									Lecture lecture = lectures.get(i);
+								for(int i=0;i<lectureBooks.size();i++){
 									LectureBook lectureBook = lectureBooks.get(i);
-				%>	
+									Lecture lecture = (Lecture)request.getAttribute(lectureBook.getLecturename()+i);
+				%>			
 									<tr>
 										<td colspan="4">
 											<div class="userle_factorwrap">
@@ -191,7 +190,7 @@
 													<li class="userle_li usl_time">
 														
 														<%
-															ArrayList<LectureBook> lecturetimes = (ArrayList<LectureBook>)request.getAttribute(lecture.getTitle());
+															ArrayList<LectureBook> lecturetimes = (ArrayList<LectureBook>)request.getAttribute("time"+i);
 															if(!lecturetimes.isEmpty()){
 																if(lecturetimes.size()<=3){
 														%>

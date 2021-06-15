@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <style type="text/css">
 	@font-face {
     font-family: 'Recipekorea';
@@ -82,13 +82,16 @@
 		font-weight: bold;
 	}
 </style>
-<script type="text/javascript">
-	function check(loginuser) {
-		if (loginuser.id.value.length == 0 || loginuser.pwd.value.length == 0){
-			alter("아이디와 비밀번호를 입력하여주세요");
-			return false;
-		}
-	}
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#login_btn').click(function(){
+			if($('#id').val().length == 0 || $('#pwd').val().length == 0){
+				alert("아이디와 비밀번호를 입력하여주세요");
+				return false;
+			}
+		});
+	});
 </script>
 <% 
 	String pwdupdate = (String)request.getAttribute("pwdupdate");

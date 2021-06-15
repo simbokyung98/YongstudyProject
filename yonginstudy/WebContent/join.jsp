@@ -100,7 +100,19 @@
 			color: #064420;
 		}
 		
-	</style>
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#join_but').click(function(){
+			if($('#id').val().length == 0 ){ alert("아이디를 입력하여주세요"); $('#id').focus(); return false;}
+			if($('#pwd').val().length == 0 ){ alert("비밀번호를 입력하여주세요"); $('#id').focus(); return false;}
+			if($('#userclass').val().length == 0 ){ alert("학번을 입력하여주세요"); $('#userclass').focus(); return false; }
+			if($('#name').val().length == 0 ){ alert("이름을 입력하여주세요"); $('#name').focus(); return false; }
+			if($('#phone').val().length == 0 ){ alert("전화번호를 입력하여주세요"); $('#phone').focus(); return false; }
+		});
+	});
+</script>
 	
 </head>
 <body id="back">
@@ -111,9 +123,9 @@
 				<h5>회원가입</h5>
 				<form action="join.do" method="post" accept-charset="UTF-8">
 					<ul class="join_ul">
-						<li class="join_li"><span>아이디</span>  <input type="text" name="id"></li>
-						<li class="join_li"><span>비밀번호</span>  <input type="text" name="pwd"></li>
-						<li class="join_li"><span>학번</span>  <input type="text" name="userclass"></li>
+						<li class="join_li"><span>아이디</span>  <input type="text" name="id" id="id"></li>
+						<li class="join_li"><span>비밀번호</span>  <input type="text" name="pwd" id="pwd"></li>
+						<li class="join_li"><span>학번</span>  <input type="text" name="userclass" id="userclass"></li>
 						<li class="join_li"><span>학과</span>  <select name="major">
 									<option value="컴퓨터과학과">컴퓨터과학과</option>
 									<option value="물류통계정보학과">물류통계정보학과</option>
@@ -122,9 +134,9 @@
 									<option value="중국어학과">중국어학과</option>
 									<option value="식품영양학과">식품영양학과</option>
 								</select> </li>
-						<li class="join_li"><span>이름</span>  <input type="text" name="name"></li>
-						<li class="join_li"><span>번호</span>  <input type="text" name="phone" placeholder="010-0000-0000 형식"></li>
-						<li class="join_but"><input type="submit" value="회원가입"><a href="login.jsp">로그인 페이지</a></li>
+						<li class="join_li"><span>이름</span>  <input type="text" name="name" id="name"></li>
+						<li class="join_li"><span>번호</span>  <input type="text" name="phone" placeholder="010-0000-0000 형식" id="phone"></li>
+						<li class="join_but"><input type="submit" value="회원가입" id="join_but"><a href="login.jsp">로그인 페이지</a></li>
 					</ul>
 				</form>
 			</div>

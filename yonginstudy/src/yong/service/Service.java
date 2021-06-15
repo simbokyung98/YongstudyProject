@@ -80,16 +80,17 @@ public class Service {
 		dao.lecturebook(lectureBook);
 		
 	}
-	public ArrayList<Lecture> userlectureA(String userid) {
-		 ArrayList<Lecture> lectures = dao.userlectureA(userid);
-		return lectures;
-	}
+	
 	public ArrayList<LectureBook> userlectureB(String userid) {
 		ArrayList<LectureBook> lectures = dao.userlectureB(userid);
 		return lectures;
 	}
-	public ArrayList<LectureBook> userlecturetime(String title, String bookdate) {
-		ArrayList<LectureBook> lecturetimes = dao.userlecturetime(title, bookdate);
+	public Lecture userlectureA(String leturenaem) {
+		 Lecture lecture = dao.userlectureA(leturenaem);
+		return lecture;
+	}
+	public ArrayList<LectureBook> userlecturetime(String lecturename, String bookdate) {
+		ArrayList<LectureBook> lecturetimes = dao.userlecturetime(lecturename, bookdate);
 		return  lecturetimes;
 	}
 	public User searchuser(String userid) {

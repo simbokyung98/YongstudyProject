@@ -103,13 +103,34 @@
 		font-size: 18px;
 	}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#studywrite_but').click(function(){
+			if($('#title').val().length == 0){
+				alert("제목을 입력하여주세요");
+				$('#title').focus();
+				return false;
+			}
+			if($('#location').val().length == 0){
+				alert("장소를 입력하여주세요");
+				$('#location').focus();
+				return false;
+			}
+			if($('#stuwrite_detail').val().length == 0){
+				alert("내용을 입력하여주세요");
+				$('#stuwrite_detail').focus();
+				return false;
+			}
+			document.myForm.target = "parent"; // 타켓을 부모창으로 설정
+		    document.myForm.action = "studywrite.do";
+		    document.myForm.submit();
+		    self.close();
+		});
+	});
+</script>
 <script type="text/javascript">
-	function goSubmit() {
-	    document.myForm.target = "parent"; // 타켓을 부모창으로 설정
-	    document.myForm.action = "studywrite.do";
-	    document.myForm.submit();
-	    self.close();
-	}
+
 </script>
 </head>
 <body>
@@ -119,7 +140,7 @@
 	<main id="stuwrite_main" >
 		<form name="myForm" method="post"  enctype="multipart/form-data" accept-charset="UTF-8">
 			<ul class="stuwrite_ul">
-				<li>스터디 명 : <input type="text" class=" stuwrite_text stuwrite_title" name="title"> </li>
+				<li>스터디 명 : <input type="text" class=" stuwrite_text stuwrite_title" name="title" id="title"> </li>
 				<li>모집인원 : <select class="stuwrite_people" name="maxpeople">
 							<%
 								for (int i=1;i<=20;i++){
@@ -131,9 +152,9 @@
 								}
 							%>
 				</select> </li>
-				<li>장소 : <input type="text" class=" stuwrite_text stuwrite_location" name="location"> </li>
+				<li>장소 : <input type="text" class=" stuwrite_text stuwrite_location" name="location" id="location"> </li>
 				<li> 이미지 : <input type="file" name="img"> </li>
-				<li id="stuw_dwrap"><span> 내용 :</span> <textarea rows="10" cols="90" id="stuwrite_detail" name="contents"></textarea> </li>
+				<li id="stuw_dwrap"><span> 내용 :</span> <textarea rows="10" cols="90" id="stuwrite_detail" name="contents" ></textarea> </li>
 				
 				<li id="stuw_subwrap">
 				<input type="hidden" name="user" value="${id}">
@@ -142,7 +163,7 @@
 				</li>
 			</ul>
 		</form>
-		<input type="submit" onclick="goSubmit()" value="등록" class="stuw_onclickbut">
+		<input type="submit" value="등록" class="stuw_onclickbut" id="studywrite_but">
 	</main>
 </body>
 </html>

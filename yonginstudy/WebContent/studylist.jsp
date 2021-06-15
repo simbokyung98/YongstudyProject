@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>스터디 목록</title>
 <style type="text/css">
 	*{
 		margin: 0 auto;

@@ -513,32 +513,7 @@ public class YongDao {
 		}
 		
 	}
-	public ArrayList<Lecture> userlectureA(String userid) {
-		ArrayList<Lecture> lectures = new ArrayList<Lecture>();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Lecture lecture = null;
-		try {
-			conn = connect();
-			pstmt  = conn.prepareStatement("select distinct(a.img), a.college, a.location, a.title from lecture a, lecturebook b where b.userid = ? and a.title = b.lecturename;");
-			pstmt.setString(1, userid);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				lecture = new Lecture();
-				lecture.setImg(rs.getString(1));
-				lecture.setCollege(rs.getString(2));
-				lecture.setLocation(rs.getString(3));
-				lecture.setTitle(rs.getString(4));
-				lectures.add(lecture);
-			}
-		}catch (Exception e) {
-			System.out.println("Join error : " + e);
-		}finally {
-			close(conn, pstmt, rs);
-		}
-		return lectures;
-	}
+	
 	public ArrayList<LectureBook> userlectureB(String userid) {
 		ArrayList<LectureBook> lectureBooks = new ArrayList<LectureBook>();
 		Connection conn = null;
@@ -558,13 +533,37 @@ public class YongDao {
 				lectureBooks.add(lectureBook);
 			}
 		}catch (Exception e) {
-			System.out.println("Join error : " + e);
+			System.out.println(" UserlectureB error : " + e);
 		}finally {
 			close(conn, pstmt, rs);
 		}
 		return lectureBooks;
 	}
-	public ArrayList<LectureBook> userlecturetime(String title, String bookdate) {
+	public Lecture userlectureA(String leturenaem) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Lecture lecture = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select distinct(a.img), a.college, a.location, a.title from lecture a, lecturebook b where b.lecturename=? and a.title = b.lecturename;");
+			pstmt.setString(1, leturenaem);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lecture = new Lecture();
+				lecture.setImg(rs.getString(1));
+				lecture.setCollege(rs.getString(2));
+				lecture.setLocation(rs.getString(3));
+				lecture.setTitle(rs.getString(4));
+			}
+		}catch (Exception e) {
+			System.out.println("UserlectureA error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lecture;
+	}
+	public ArrayList<LectureBook> userlecturetime(String lecturename, String bookdate) {
 		ArrayList<LectureBook> lecturetimes = new ArrayList<LectureBook>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -573,7 +572,7 @@ public class YongDao {
 		try {
 			conn = connect();
 			pstmt  = conn.prepareStatement("select lecturename,booktime from lecturebook where lecturename = ? and bookdate=?;");
-			pstmt.setString(1, title);
+			pstmt.setString(1, lecturename);
 			pstmt.setString(2, bookdate);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {

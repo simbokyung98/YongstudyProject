@@ -24,20 +24,26 @@ public class UserLectureController implements Controller {
 		
 		Service s = Service.getInstance();
 		
-		ArrayList<Lecture> lectures = s.userlectureA(userid);
-		request.setAttribute("lectures", lectures);
-		
 		ArrayList<LectureBook> lectureBooks = s.userlectureB(userid);
 		request.setAttribute("lectureBooks", lectureBooks);
 		
-		ArrayList<LectureBook> lecturetimes = null;
-		for(int i=0;i<lectures.size();i++) {
-			LectureBook lectureBook = lectureBooks.get(i);
-			Lecture lecture = lectures.get(i);
-			lecturetimes = s.userlecturetime(lecture.getTitle(), lectureBook.getBookdate());
+		for(int j=0;j<lectureBooks.size();j++) {
+			LectureBook lectureBook1 = lectureBooks.get(j);
+			Lecture lecture = s.userlectureA(lectureBook1.getLecturename());
+			request.setAttribute(lectureBook1.getLecturename()+j, lecture);
 			
-			request.setAttribute(lecture.getTitle(), lecturetimes);
+			
 		}
+		
+		ArrayList<LectureBook> lecturetimes = null;
+		for(int i=0;i<lectureBooks.size();i++) {
+			LectureBook lectureBook2 = lectureBooks.get(i);
+			lecturetimes = s.userlecturetime(lectureBook2.getLecturename(), lectureBook2.getBookdate());
+			request.setAttribute("time"+i, lecturetimes);
+			
+		}
+		
+		
 		
 		
 			

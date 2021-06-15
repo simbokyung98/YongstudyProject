@@ -97,7 +97,7 @@
 <body>
 	<main id="find_main">			
 		<div id="find_wrap">
-		<h1 id="find_title">YONG 스터디</h1>
+		<h1 id="find_title">아이디 찾기</h1>
 			<div id="find_search_wrap">
 				
 				<form action="find.do" method="post">
