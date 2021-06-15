@@ -23,6 +23,7 @@ public class UserLectureController implements Controller {
 		String userid = (String)session.getAttribute("id");
 		
 		Service s = Service.getInstance();
+		
 		ArrayList<Lecture> lectures = s.userlectureA(userid);
 		request.setAttribute("lectures", lectures);
 		
@@ -31,8 +32,9 @@ public class UserLectureController implements Controller {
 		
 		ArrayList<LectureBook> lecturetimes = null;
 		for(int i=0;i<lectures.size();i++) {
+			LectureBook lectureBook = lectureBooks.get(i);
 			Lecture lecture = lectures.get(i);
-			lecturetimes = s.userlecturetime(lecture.getTitle());
+			lecturetimes = s.userlecturetime(lecture.getTitle(), lectureBook.getBookdate());
 			
 			request.setAttribute(lecture.getTitle(), lecturetimes);
 		}

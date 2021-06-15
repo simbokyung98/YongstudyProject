@@ -1,3 +1,5 @@
+<%@page import="yong.vo.User"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,6 +37,14 @@
 		background: #66865C;
 		color: white;		
 	}
+	.act_admin a{
+		text-decoration: none;
+		color: gray;
+	}
+	.suv_admin a{
+		color: white;
+		text-decoration: none;
+	}
 	#admin_usertablewrap{
 		clear: left;
 		background: rgba(231,228,221,0.9);
@@ -64,6 +74,15 @@
 		background: white;
 	}
 </style>
+<script type="text/javascript">
+		window.name = "admin";
+		function userviewbut(user){
+	   		 var url = "userinfo.do?job=admin&userid="+user;
+	   		 var name = "userview";
+	   		 var option = "width = 850, height = 600, top = 100, left = 200, location = no"
+	 	  	window.open(url, name, option);
+		}
+</script>
 </head>
 <body>
 	<header>
@@ -72,10 +91,10 @@
 	<main class="admin_main">
 		<nav class="admin_nav">
 			<div class="admin_navinside act_admin">
-				관리자 회원 관리
+				<a href="userinfo.do?job=all">관리자 회원 관리</a>
 			</div>
 			<div class="admin_navinside suv_admin">
-				관리자 강의실 예약 관리
+				<a href="adminlecture.do">관리자 강의실 예약 관리</a>
 			</div>
 		</nav>
 		<div id="admin_usertablewrap">
@@ -91,25 +110,39 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>201757017</td>
-						<td>aaa</td>
-						<td>물류통계정보학과</td>
-						<td>심보경</td>
-						<td>010-1111-2222</td>
-						<td><button type="button" class="userinfo_upbut"><img alt="" src="img/leaf.png" style="width: 25px; height: 25px;"> </button> </td>
-					</tr>
-					<tr>
-						<td>201757017</td>
-						<td>aaa</td>
-						<td>물류통계정보학과</td>
-						<td>심보경</td>
-						<td>010-1111-2222</td>
-						<td><button type="button" class="userinfo_upbut"><img alt="" src="img/leaf.png" style="width: 25px; height: 25px;"> </button> </td>
-					</tr>
+					<%
+						ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+						
+						if(!users.isEmpty()){
+							
+							for(int i=0;i<users.size();i++){
+								User user = users.get(i);
+					%>
+							<tr>
+								<td><%=user.getUserclass() %></td>
+								<td><%=user.getId() %></td>
+								<td><%=user.getMajor() %></td>
+								<td><%=user.getName() %></td>
+								<td><%=user.getPhone() %></td>
+								<td><button type="button" class="userinfo_upbut" onclick="userviewbut('<%=user.getId()%>')"><img src="img/leaf.png" style="width: 25px; height: 25px;"/> </button> </td>
+							</tr>
+					<% 			
+							}
+						}else{
+							
+					%>
+						<tr>
+							<td colspan="6">유저가 없습니다</td>
+						</tr>
+					<%		
+						}
+					
+					%>
+					
 				</tbody>
 			</table>
 		</div>
+		
 	</main>
 	<footer>
 		<%@ include file="factor/footer.jsp" %>

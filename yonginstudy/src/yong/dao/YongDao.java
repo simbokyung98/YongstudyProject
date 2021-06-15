@@ -150,6 +150,28 @@ public class YongDao {
 		}
 		
 	}
+	public void update(User user) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("update user set userclass=?, id=?,pwd=?,name=?,major=?,phone=? where userclass=?;");
+			pstmt.setInt(1, user.getUserclass());
+			pstmt.setString(2, user.getId());
+			pstmt.setString(3, user.getPwd());
+			pstmt.setString(4, user.getName());
+			pstmt.setString(5, user.getMajor());
+			pstmt.setString(6, user.getPhone());
+			pstmt.setInt(7, user.getUserclass());
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("Join error : " + e);
+		}finally {
+			close(conn, pstmt);
+		}
+		
+	}
+	
 	public ArrayList<Lecture> lecturesearch() {
 		ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 		Connection conn = null;
@@ -542,7 +564,7 @@ public class YongDao {
 		}
 		return lectureBooks;
 	}
-	public ArrayList<LectureBook> userlecturetime(String title) {
+	public ArrayList<LectureBook> userlecturetime(String title, String bookdate) {
 		ArrayList<LectureBook> lecturetimes = new ArrayList<LectureBook>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -550,8 +572,9 @@ public class YongDao {
 		LectureBook lectureBook = null;
 		try {
 			conn = connect();
-			pstmt  = conn.prepareStatement("select lecturename,booktime from lecturebook where lecturename = ?;");
+			pstmt  = conn.prepareStatement("select lecturename,booktime from lecturebook where lecturename = ? and bookdate=?;");
 			pstmt.setString(1, title);
+			pstmt.setString(2, bookdate);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				lectureBook = new LectureBook();
@@ -708,5 +731,159 @@ public class YongDao {
 		}
 		
 	}
+	public ArrayList<User> searchAlluser() {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select * from user;");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setUserclass(rs.getInt(1));
+				user.setId(rs.getString(2));
+				user.setPwd(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setMajor(rs.getString(5));
+				user.setPhone(rs.getString(6));
+				users.add(user);
+			}
+		}catch (Exception e) {
+			System.out.println("studyapplyuserU error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return users;
+	}
+	public ArrayList<LectureBook> datecount() {
+		ArrayList<LectureBook> lectBooks = new ArrayList<LectureBook>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LectureBook lectureBook = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select bookdate, count(*) from lecturebook group by bookdate;");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lectureBook = new LectureBook();
+				lectureBook.setBookdate(rs.getString(1));
+				lectureBook.setCount(rs.getString(2));
+				lectBooks.add(lectureBook);
+			}
+		}catch (Exception e) {
+			System.out.println("Datecount error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lectBooks;
+	}
+	public ArrayList<LectureBook> lecturelist(String date) {
+		ArrayList<LectureBook> lecturelist = new ArrayList<LectureBook>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LectureBook lectureBook = null;
+		try {
+			conn = connect();
+			pstmt  = conn.prepareStatement("select * from lecturebook where bookdate = ?;");
+			pstmt.setString(1, date);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				lectureBook = new LectureBook();
+				lectureBook.setBookkey(rs.getInt(1));
+				lectureBook.setUserid(rs.getString(2));
+				lectureBook.setLecturename(rs.getString(3));
+				lectureBook.setBookdate(rs.getString(4));
+				lectureBook.setBooktime(rs.getString(5));
+				lectureBook.setConfirm(rs.getString(6));
+				lecturelist.add(lectureBook);
+			}
+		}catch (Exception e) {
+			System.out.println("Datecount error : " + e);
+		}finally {
+			close(conn, pstmt, rs);
+		}
+		return lecturelist;
+	}
+	public void leturestateupdate(String state, int key) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("update lecturebook set confirm=? where bookkey=?;");
+			pstmt.setString(1, state);
+			pstmt.setInt(2, key);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("usercanclestudy error : " + e);
+		}finally {
+			close(conn, pstmt);
+		}
+	}
+	public String findID(int userclass, String name) {
+		String userid = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select id from user where userclass=? and name=?;");
+			pstmt.setInt(1, userclass);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				userid = rs.getString(1);
+			}
+		}catch (Exception e) {
+			System.out.println("Login error : " + e);
+		}finally {
+			close(conn, pstmt,rs);
+		}
+		return userid;		
+	}
+	public String findpwd(String id, String name) {
+		String searchpwd = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("select pwd from user where id=? and name=?;");
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				searchpwd = rs.getString(1);
+			}
+		}catch (Exception e) {
+			System.out.println("Login error : " + e);
+		}finally {
+			close(conn, pstmt,rs);
+		}
+		return searchpwd;
+	}
+	public void updatepwd(String pwd, String userid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("update user set pwd=? where id=?;");
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, userid);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("usercanclestudy error : " + e);
+		}finally {
+			close(conn, pstmt);
+		}
+		
+	}
+	
 
 }

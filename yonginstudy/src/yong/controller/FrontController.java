@@ -18,6 +18,7 @@ public class FrontController extends HttpServlet{
 		map = new HashMap<String, Controller>();
 		map.put("/login.do", new LoginController());
 		map.put("/join.do", new JoinController());
+		map.put("/find.do", new FindController());
 		map.put("/Logout.do", new LogoutController());
 		map.put("/lectureSearch.do", new LectureSearchController());
 		map.put("/lecturedetail.do", new LectureDetailController());
@@ -33,6 +34,11 @@ public class FrontController extends HttpServlet{
 		map.put("/userinfo.do", new UserInfoController());
 		map.put("/userstudy.do", new UserStudyController());
 		map.put("/usercancelstudy.do", new UserCancelStudyController());
+		map.put("/adminlecture.do", new AdminLectureController());
+		map.put("/lecturelist.do", new LectureListController());
+		map.put("/updateconfirm.do", new UpdateConfirmController());
+		map.put("/updatepwd.do", new UpdatePwdController());
+		
 	}
 	
 	@Override

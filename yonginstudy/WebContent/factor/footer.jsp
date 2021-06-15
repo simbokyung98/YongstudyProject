@@ -145,9 +145,9 @@
 				<div id="bottom_text">
 					<h3 class="fot_title t1"> 용인대학교 정보 </h3>
 					<ul>
-						<li> 주소 : 201757017 </li>
-						<li> 전화 : 000-000-0000 </li>
-						<li>이메일 : 000@0000.000 </li>
+						<li> 주소 : 경기도 용인시 처인구 삼가동 용인대학로 134 </li>
+						<li> 전화 : 031-8020-3114 </li>
+						<li> FAX : 031-332-6479</li>
 					</ul>
 					<h3 class="fot_title t2"> 제작자 정보 </h3>
 					<ul>
@@ -157,7 +157,10 @@
 				<div class="fot_right">
 					<ul>     
 						<li><div class="callcen">고객센터</div><div class="callcennum">1111-2222</div> </li>
-						<li><div class="sns"><img src="/yonginstudy/img/facebook.png" class="f"><img src="/yonginstudy/img/instagram.png" class="i"></div> </li>
+						<li><div class="sns">
+								<a href="https://www.facebook.com/yonginuni/"><img src="/yonginstudy/img/facebook.png" class="f"></a>
+								<a href="https://www.instagram.com/yongin_university/"><img src="/yonginstudy/img/instagram.png" class="i"></a>
+							</div> </li>
 					</ul>
 				</div>
 			</div>

@@ -88,8 +88,8 @@ public class Service {
 		ArrayList<LectureBook> lectures = dao.userlectureB(userid);
 		return lectures;
 	}
-	public ArrayList<LectureBook> userlecturetime(String title) {
-		ArrayList<LectureBook> lecturetimes = dao.userlecturetime(title);
+	public ArrayList<LectureBook> userlecturetime(String title, String bookdate) {
+		ArrayList<LectureBook> lecturetimes = dao.userlecturetime(title, bookdate);
 		return  lecturetimes;
 	}
 	public User searchuser(String userid) {
@@ -114,6 +114,38 @@ public class Service {
 	}
 	public void usercanclestudy(String userid, String studykey) {
 		dao.usercanclestudy(userid,studykey);
+		
+	}
+	public ArrayList<User> searchAlluser() {
+		ArrayList<User> users = dao.searchAlluser();
+		return users;
+	}
+	public void update(User user) {
+		dao.update(user);
+		
+	}
+	public ArrayList<LectureBook> datecount() {
+		ArrayList<LectureBook> lectureBooks = dao.datecount();
+		return lectureBooks;
+	}
+	public ArrayList<LectureBook> lecturelist(String date) {
+		ArrayList<LectureBook> lecturelist = dao.lecturelist(date);
+		return lecturelist;
+	}
+	public void leturestateupdate(String state, int key) {
+		dao.leturestateupdate(state, key);
+		
+	}
+	public String findID(int userclass, String name) {
+		
+		return dao.findID(userclass, name);
+	}
+	public String findpwd(String id, String name) {
+		
+		return dao.findpwd(id, name);
+	}
+	public void updatepwd(String pwd, String userid) {
+		dao.updatepwd(pwd, userid);
 		
 	}
 	

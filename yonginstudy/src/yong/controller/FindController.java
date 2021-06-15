@@ -7,42 +7,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import yong.service.Service;
-import yong.vo.User;
 
-public class JoinController implements Controller {
+public class FindController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
+		String job = request.getParameter("job");
 		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		int userclass = Integer.parseInt(request.getParameter("userclass"));
-		String major = request.getParameter("major");
+		int userclass = 0;
+		String id = null;
+		
+		
 		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
 		
-		String update = request.getParameter("update");
 		
-		User user = new User(userclass, id, pwd, name, major, phone); 		
+		
 		Service s = Service.getInstance();
 		String path = null;
+		String searchid = null;
 		
-		if(!update.isEmpty()) {
-			s.update(user);
-			path = "userinfo.do?job=all";
-		}else {
-			s.join(user);
-			path = "/login.jsp";
+		if(job.equals("id")) {
+			userclass = Integer.parseInt(request.getParameter("userclass"));
+			path = "/idFind.jsp";
+			searchid = s.findID(userclass, name);
+			request.setAttribute("searchid", searchid);
+		}else if(job.equals("pwd")) {
+			id = request.getParameter("id");
+			path = "/pwdFind.jsp";
+			String searchpwd = s.findpwd(id, name);
+			request.setAttribute("resultpwd", searchpwd );
 		}
 		
 		
-		
-	
-		
-		
+		request.setAttribute("done", "done");
 		HttpUtil.forward(request, response, path);
 		
 

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>강의실 예약</title>
 <style type="text/css">
 	*{
 		margin: 0 auto;

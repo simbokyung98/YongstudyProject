@@ -1,3 +1,5 @@
+<%@page import="yong.vo.LectureBook"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,12 +30,20 @@
 		margin-left: 5px;
 	}
 	.act_admin{	
-		background: rgba(231,228,221,0.9);
-		color: gray;	
+		background: rgba(231,228,221,0.9);	
 	}
+	
 	.suv_admin{	
 		background: #66865C;
-		color: white;		
+				
+	}
+	.act_admin a{
+		text-decoration: none;
+		color: gray;
+	}
+	.suv_admin a{
+		color: white;
+		text-decoration: none;
 	}
 	#admin_usertablewrap{
 		clear: left;
@@ -47,7 +57,7 @@
 	
 	.admin_calwrap{
 		float: left;
-		width: 300px;
+		width: 400px;
 	}
 	.butval{
 		background: white;
@@ -65,6 +75,46 @@
 		background: white;
 		color: orange;
 		
+	}
+	
+	.admin_lecretablewrap{
+		width: 570px;
+		margin-left: 50px;
+		float: left;
+	}
+	.admin_lecretable{
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.admin_lecretable th{
+		height: 40px; 
+		background: #88A67E;
+		font-family: 'ELAND_Choice_L';
+	}
+	#adlere_thstart{
+		border-radius: 5px 0 0 0;
+	}
+	#adlere_thend{ 
+		border-radius: 0 5px 0 0;
+	}
+	.admin_lecretable td{
+		background: white;
+		height: 50px;
+		text-align: center;
+		border-bottom: 2px solid #cccccc;
+		font-family: 'ELAND_Choice_L';
+	}
+	.ad_lere_but{
+		border: 2px solid #66865C;
+		background: #88A67E;
+		padding: 5px 10px;
+		font-family: 'ELAND_Choice_L';
+		border-radius: 3px;
+		color: white; 
+	}
+	.reserlinkwrap{
+		height: 20px;
+		width: 40px;
 	}
 </style>
 <script type="text/javascript">
@@ -102,16 +152,16 @@
 		//달력 출력
 		for (i=1;i<=lastDate.getDate();i++){
 			cell = row.insertCell();
-			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='reserlinkwrap'><button value="+i+" type='button' class='reserlink'>1</button></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
+			cell.innerHTML = "<div class='butval' value="+i+"><font color=black>"+i+"</div><div class='reserlinkwrap' id="+i+"></div>"; //셀의 0부터 마지막 데이까지 HTML 문법 넣기
 			cnt = cnt+1;//열의 위치 다음칸으로
 			if(cnt %7 == 1){
 				//일요일 구하기
-				cell.innerHTML = "<div class='butval' value="+i+"><font color = red>" + i+"</div><div class='reserlinkwrap'><button value="+i+" type='button' class='reserlink'>1</button></div>";
+				cell.innerHTML = "<div class='butval' value="+i+"><font color = red>" + i+"</div><div class='reserlinkwrap' id="+i+"></div>";
 				//7번째 cell에만 색칠
 			}
 			if(cnt%7 == 0){
 				//토요일 구하기
-				cell.innerHTML ="<div class='butval' value="+i+"><font color=skyblue>" + i+"</div><div class='reserlinkwrap'><button value="+i+" type='button' class='reserlink'>1</button></div>";
+				cell.innerHTML ="<div class='butval' value="+i+"><font color=skyblue>" + i+"</div><div class='reserlinkwrap' id="+i+"></div>";
 				row = calendar.insertRow();
 			}
 			cell.style.border = "1px solid gray";
@@ -120,21 +170,46 @@
 			cell.style.padding = '5px';
 			cell.style.background = 'white';
 		}
-	}
-	
+	}	
+</script>
+<%
+	ArrayList<LectureBook> lectBooks = (ArrayList<LectureBook>)request.getAttribute("lectureBooks");
+%>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function() { 
+		var year = $('#y').text();
+		var month = $('#m').text();
+		for(var i=0;i<=31;i++){
+			var date = year + "년" + month +"월"+i+"일";
+			<%
+				for(int j=0;j<lectBooks.size();j++){
+					LectureBook lectureBook = lectBooks.get(j);
+			%>
+					var bookdate = '<%= lectureBook.getBookdate()%>';
+					var bookcount = '<%= lectureBook.getCount()%>';
+					if(date == bookdate){
+						var date = "<button type='button' class='reserlink' onclick='location.href=`lecturelist.do?date=" + bookdate + "`'>" + bookcount + "</button>";
+						$('#'+i).html(date);
+					}
+			<%
+				}			
+			%>		
+		}		
+	});
 </script>
 </head>
 <body>
-	<header>
+	<header> 
 		<%@ include file="factor/header.jsp" %>
 	</header>
 	<main class="admin_main">
 		<nav class="admin_nav">
 			<div class="admin_navinside suv_admin">
-				관리자 회원 관리
+				<a href="userinfo.do?job=all" >관리자 회원 관리</a>
 			</div>
 			<div class="admin_navinside act_admin">
-				관리자 강의실 예약 관리
+				<a href="adminlecture.do">관리자 강의실 예약 관리</a>
 			</div>
 		</nav>
 		<div id="admin_usertablewrap">
@@ -148,23 +223,54 @@
 						buildCalendar();
 				</script>
 			</div>
-			<div>
-				<table>
+			<div class="admin_lecretablewrap">
+				<table class="admin_lecretable">
 					<thead>
 						<tr>
-							<th>강의실</th>
+							<th id="adlere_thstart">강의실</th>
 							<th>예약자</th>
 							<th>예약시간</th>
-							<th>확인</th>
+							<th>상태</th>
+							<th id="adlere_thend">확인</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>거울연습실1</td>
-							<td>aaa</td>
-							<td>17:00</td>
-							<td><button type="button">대기</button><button type="button">가능</button><button type="button">불가능</button> </td>
-						</tr>
+						<%
+							ArrayList<LectureBook> lecturelist = (ArrayList<LectureBook>)request.getAttribute("lecturelist");
+						
+							if(lecturelist != null ){
+								for(int i=0;i<lecturelist.size();i++){
+									LectureBook lectureBook2 = lecturelist.get(i);
+						%>
+									<tr>
+										<td><%=lectureBook2.getLecturename() %></td>
+										<td><%=lectureBook2.getUserid() %></td>
+										<td><%=lectureBook2.getBooktime() %></td>
+										<td>
+										<%
+											if(lectureBook2.getConfirm() == null){
+										%>
+											대기
+										<% 		
+											}else{
+										%>
+											<%=lectureBook2.getConfirm() %>
+										<% 		
+											}
+										%>
+										</td>
+										<td>
+											<button type="button" class="ad_lere_but" onclick="location.href='updateconfirm.do?state=가능&key=<%=lectureBook2.getBookkey()%>'">가능</button>
+											<button type="button" class="ad_lere_but" onclick="location.href='updateconfirm.do?state=불가능&key=<%=lectureBook2.getBookkey()%>'">불가능</button> 
+										</td>
+									</tr>
+						<%			
+								}
+							}else{
+								
+							}
+						%>
+						
 					</tbody>
 				</table>
 			</div>

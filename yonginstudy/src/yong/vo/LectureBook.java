@@ -9,6 +9,8 @@ public class LectureBook {
 	private String booktime;
 	private String confirm;
 	
+	private String count;
+	
 	public LectureBook() {}
 	
 	public LectureBook( String userid, String lecturename, String bookdate, String booktime) {
@@ -53,6 +55,16 @@ public class LectureBook {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+	
+	
 	
 	
 

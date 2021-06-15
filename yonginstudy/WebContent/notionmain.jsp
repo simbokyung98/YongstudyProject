@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
 <style type="text/css">
 	#news_main{
 		height:1000px;
@@ -242,7 +242,15 @@
 							</table>
 					</div>
 			<div id="notion_btn">
-				<a href="notionwrite.jsp" class="notionw_btn">+</a>
+				<%
+				if(id2.equals("admin")){
+					%>
+						<a href="notionwrite.jsp" class="notionw_btn">+</a>
+					<% 	
+						}
+					%>
+						
+				
 			</div>
 		</section>
 	</main>

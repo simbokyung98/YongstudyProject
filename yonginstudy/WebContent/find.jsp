@@ -44,34 +44,17 @@
 		font-size: 40px;
 		
 	}
-	#login_contents{
-		font-family: 'ELAND_Choice_B';
-		width: 250px;
-	}
-	.login-con{
-		text-align: left;
+	.find_but{
 		width: 300px;
-		margin:20px 0 20px 0;
-	}
-	.login_input{
-		width: 200px;
-		height: 40px;
-		border: 1px solid #064420;
-		border-radius: 3px;
-	}
-	#login_btn{
-		width: 120px;
-		height: 40px;
-		background: #064420;
+		height: 60px;
+		background: #88A67E;
 		border-radius: 5px;
 		border: 0;
 		color: white;
 		font-family: 'ELAND_Choice_B';
 		font-weight: bold;
-		font-size: 24px;
-	}
-	#login_link_wrap{
-		margin: 10px 0 10px 0;
+		font-size: 20px;
+		letter-spacing: 3px; 
 	}
 	.login_link:link, .login_link:active, .login_link:visited{
 		font-family: 'ELAND_Choice_L';
@@ -82,46 +65,15 @@
 		font-weight: bold;
 	}
 </style>
-<script type="text/javascript">
-	function check(loginuser) {
-		if (loginuser.id.value.length == 0 || loginuser.pwd.value.length == 0){
-			alter("아이디와 비밀번호를 입력하여주세요");
-			return false;
-		}
-	}
-</script>
-<% 
-	String pwdupdate = (String)request.getAttribute("pwdupdate");
-%>
-<script type="text/javascript">
-	window.onload = function(){
-		var result =  '<%= pwdupdate%>';
-		if(result != 'null'){
-			alert("<%= pwdupdate%> " );				
-		}
-	}	
-		</script>
+
 </head>
 <body>
 	<main id="login_main">			
 		<div id="login_wrap">
 			<h1 id="login_title">YONG 스터디</h1>
-		
-			<div id="login_contents">
-				<form action="login.do" method="post" onsubmit="return check(this)">
-					<div class="login-con">
-					<span style="font-size: 20px; padding-right: 20px;">ID : </span><input type="text" class="login_input" name="id" id="id" >
-					</div>
-					<div class="login-con">
-					<span style="font-size: 20px;padding-right: 13px;">PW : </span><input type="password" class="login_input" name="pwd" id="pwd">
-					</div>
-					<input type="submit" id="login_btn" value="Log in">
-				</form>
-			</div>
-			<div id="login_link_wrap">
-				<a href="join.jsp" class="login_link" style="margin:0 80px 0 10px;">회원가입</a>
-				<a href="find.jsp" class="login_link">ID/PW 찾기</a>
-			</div>
+			<button class="find_but" onclick="location.href='idFind.jsp'">아이디 찾기</button><br><br>
+			<button class="find_but" onclick="location.href='pwdFind.jsp'">비밀번호 찾기</button>	<br><br>
+			<a href="login.jsp" class="login_link" style="margin-left: 220px; ">로그인</a>
 		</div>
 	</main>
 	

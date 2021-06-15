@@ -115,7 +115,6 @@
             var option = "width = 800, height = 500, top = 100, left = 200, location = no"
             window.open(url, name, option);
         }
-        <% %>
       
     </script>
 </head>

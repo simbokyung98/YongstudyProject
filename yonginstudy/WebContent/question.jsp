@@ -194,7 +194,7 @@
 						</ul>
 						<ul class="question_things" id="1">
 							<li>
-							<h5>Q. 주문 취소 하고 싶어요 </h5> 
+							<h5>Q. 강의실 예약을 취소하고 싶어요 </h5> 
 							<button class="but_click" id="1"><img src="img/open.png" style="width: 20px; height: 20px;"> </button>
 							</li>
 							<div class="question_content">
@@ -202,25 +202,24 @@
 									<div class="question_inside_left"><h4>A.</h4></div>
 									<div class="question_inside_right">
 										로그인 후 마이페이지에 들어가세요<br><br>
-										상품이 배송준비중인지 확인하세요<br><br>
-										배송 준비중이라면 옆에 취소 버튼으로 취소가 가능합니다<br>
-										배송중이라면 취소가 불가능합니다<br>
+										강의실 상태를 확인하세요<br><br>
+										강의실 대기 상태라면 관리자에게 연락해서 취소가 가능합니다<br>
 									</div>
 								</div>
 							</div>
 						</ul>
 						<ul class="question_things" id="1">
 							<li>
-							<h5>Q. 레시피 재료를 모두 구매할 필요는 없어요 </h5> 
+							<h5>Q. 스터디를 열고싶어요 </h5> 
 							<button class="but_click" id="1"><img src="img/open.png" style="width: 20px; height: 20px;"> </button>
 							</li>
 							<div class="question_content">
 								<div class="question_inside">
 									<div class="question_inside_left"><h4>A.</h4></div>
 									<div class="question_inside_right">
-										장바구니 넣기 전 필요한 제품 제외 상품엔 체크박스를 제외합니다<br><br>
-										장바구니에 넣습니다<br><br>
-										장바구니에 가서 원하는 상품만 담겼는지 확인합니다<br>
+										스터디 목록에들어갑니다<br><br>
+										스터디 목록 맨 끝 플러스 버튼을 클릭합니다 <br><br>
+										열고싶은 스터디를 자세히 적어주세요!<br>
 									</div>
 								</div>
 							</div>

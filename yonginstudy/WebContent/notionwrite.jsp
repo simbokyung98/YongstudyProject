@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 등록</title>
+<title>공지사항</title>
 <style type="text/css">
 	#news_main{
 		height:1000px;

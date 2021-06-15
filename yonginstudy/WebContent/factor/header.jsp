@@ -136,8 +136,24 @@
 	<div id="header_wrap">
 		<div id="up_menu">
 			<ul id="top_menu">
-				<li><a href="Logout.do" class="top_li"> 로그아웃 </a></li>
-				<li><a href="userlecture.do" class="top_li"> 마이페이지 </a></li>
+			<li><a href="Logout.do" class="top_li"> 로그아웃 </a></li>
+				<%
+					HttpSession session2 = request.getSession();
+					String id2 = (String)session2.getAttribute("id");
+					
+					if(id2.equals("admin")){
+				%>
+					<li><a href="userinfo.do?job=all" class="top_li"> 관리자페이지 </a></li>
+				<% 
+						
+					}else{
+				%>
+					<li><a href="userlecture.do" class="top_li"> 마이페이지 </a></li>
+				<% 
+					}
+				%>
+				
+				
 			</ul>
 		</div>
 		<nav id="menu">
@@ -145,7 +161,7 @@
 				<a href="/yonginstudy/main.jsp"><img alt="로고이미지" src="/yonginstudy/img/logo.png"></a>
 			</div>
 			<ul id="main_menu">
-				<li><a href="#">YONG 스터디</a></li>
+				<li><a href="yongstudy.jsp">YONG 스터디</a></li>
 				<li><a href="lectureSearch.do">강의실예약</a></li>
 				<li><a href="notionlist.do">커뮤니티</a></li>
 				<li><a href="studylist.do">스터디모집</a></li>
@@ -156,8 +172,8 @@
 		<ul id="down_ul">
 			<li class="dowm_liwrap first">
 				<ul class="dowm_factor">
-					<li><a href="#">Yong 스터디 설명</a></li>
-					<li><a href="#">캠퍼스 안내</a></li>
+					<li><a href="yongstudy.jsp">Yong 스터디 설명</a></li>
+					<li><a href="campusmap.jsp">캠퍼스 맵</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">
@@ -171,7 +187,7 @@
 			<li class="dowm_liwrap">
 				<ul class="dowm_factor">
 					<li><a href="notionlist.do">공지사항</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="question.jsp">Q&A</a></li>
 				</ul>
 			</li>
 			<li class="dowm_liwrap">

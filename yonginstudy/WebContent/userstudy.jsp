@@ -131,7 +131,7 @@
 					<li class="userst_asti"><h2>마이페이지</h2></li>
 					<li class="userst_asmenu"><a href="userlecture.do">강의실예약</a></li>
 					<li class="userst_asmenu"><a href="userstudy.do">스터디</a></li>
-					<li class="userst_asmenu"><a href="userinfo.do">개인정보</a></li>
+					<li class="userst_asmenu"><a href="userinfo.do?job=indi">개인정보</a></li>
 				</ul>
 		</aside>
 		<section id="userpage_section">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>YONG 스터디</title>
 <style type="text/css">
 	#slidewrap{
 		margin: 0;
